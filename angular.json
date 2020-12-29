@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "projects": {
+    "card-game": {
+      "projectType": "application",
+      "root": "apps/card-game",
+      "sourceRoot": "apps/card-game/src",
+      "prefix": "interview-pan-bubr",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/card-game",
+            "index": "apps/card-game/src/index.html",
+            "main": "apps/card-game/src/main.ts",
+            "polyfills": "apps/card-game/src/polyfills.ts",
+            "tsConfig": "apps/card-game/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/card-game/src/favicon.ico",
+              "apps/card-game/src/assets"
+            ],
+            "styles": ["apps/card-game/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/card-game/src/environments/environment.ts",
+                  "with": "apps/card-game/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "card-game:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "card-game:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "card-game:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/card-game/tsconfig.app.json",
+              "apps/card-game/tsconfig.spec.json",
+              "apps/card-game/tsconfig.editor.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/card-game/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/card-game"],
+          "options": {
+            "jestConfig": "apps/card-game/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "card-game-e2e": {
+      "root": "apps/card-game-e2e",
+      "sourceRoot": "apps/card-game-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/card-game-e2e/cypress.json",
+            "tsConfig": "apps/card-game-e2e/tsconfig.e2e.json",
+            "devServerTarget": "card-game:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "card-game:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/card-game-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/card-game-e2e/**/*"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "tslint"
+      },
+      "library": {
+        "linter": "tslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "card-game"
+}
