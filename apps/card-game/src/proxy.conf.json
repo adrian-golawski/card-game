@@ -1,0 +1,9 @@
+{
+    "/api/dice/*": {
+        "target": "http://roll.diceapi.com",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {"^/api/dice" : ""}
+    }
+}
