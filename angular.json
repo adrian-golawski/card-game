@@ -56,7 +56,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "card-game:build"
+            "browserTarget": "card-game:build",
+            "proxyConfig": "apps/card-game/src/proxy.conf.json"
           },
           "configurations": {
             "production": {

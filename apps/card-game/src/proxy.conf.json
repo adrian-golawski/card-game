@@ -1,11 +1,4 @@
 {
-  "/api/dice/*": {
-    "target": "http://roll.diceapi.com",
-    "secure": false,
-    "logLevel": "debug",
-    "changeOrigin": true,
-    "pathRewrite": { "^/api/dice": "" }
-  },
   "/api/card/*": {
     "target": "https://deckofcardsapi.com/api",
     "secure": false,
