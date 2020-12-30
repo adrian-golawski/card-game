@@ -4,5 +4,6 @@ module.exports = {
     '<rootDir>/libs/welcome',
     '<rootDir>/libs/game',
     '<rootDir>/libs/summary',
+    '<rootDir>/libs/cards',
   ],
 };

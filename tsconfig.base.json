@@ -17,7 +17,8 @@
     "paths": {
       "@card-game/welcome": ["libs/welcome/src/index.ts"],
       "@card-game/game": ["libs/game/src/index.ts"],
-      "@card-game/summary": ["libs/summary/src/index.ts"]
+      "@card-game/summary": ["libs/summary/src/index.ts"],
+      "@card-game/cards": ["libs/cards/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

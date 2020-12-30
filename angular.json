@@ -195,6 +195,32 @@
           }
         }
       }
+    },
+    "cards": {
+      "projectType": "library",
+      "root": "libs/cards",
+      "sourceRoot": "libs/cards/src",
+      "prefix": "card-game",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/cards/tsconfig.lib.json",
+              "libs/cards/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/cards/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/cards"],
+          "options": {
+            "jestConfig": "libs/cards/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
