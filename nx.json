@@ -1,5 +1,5 @@
 {
-  "npmScope": "interview-pan-bubr",
+  "npmScope": "card-game",
   "affected": {
     "defaultBase": "master"
   },

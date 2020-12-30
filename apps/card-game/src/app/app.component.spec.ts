@@ -1,31 +1,37 @@
-import { TestBed } from '@angular/core/testing';
+import {
+  BrowserAnimationsModule,
+  NoopAnimationsModule,
+} from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+
+import { Shallow } from 'shallow-render';
+
 import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [AppComponent],
-    }).compileComponents();
+  let shallow: Shallow<AppComponent>;
+
+  beforeEach(() => {
+    shallow = new Shallow(AppComponent, AppModule);
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  it('should match the snapshot', async () => {
+    const { fixture } = await shallow
+      .replaceModule(
+        RouterModule,
+        RouterTestingModule.withRoutes([
+          {
+            path: '',
+            redirectTo: '/test',
+            pathMatch: 'full',
+          },
+        ])
+      )
+      .replaceModule(BrowserAnimationsModule, NoopAnimationsModule)
+      .render();
 
-  it(`should have as title 'card-game'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('card-game');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain(
-      'Welcome to card-game!'
-    );
+    expect(fixture).toMatchSnapshot();
   });
 });

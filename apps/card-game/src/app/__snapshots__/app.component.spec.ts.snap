@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppComponent should match the snapshot 1`] = `
+<ng-component>
+  <card-game-root>
+    <h1>
+      card-game
+    </h1>
+    <router-outlet />
+  </card-game-root>
+</ng-component>
+`;

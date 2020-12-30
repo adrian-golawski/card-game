@@ -5,7 +5,7 @@
       "projectType": "application",
       "root": "apps/card-game",
       "sourceRoot": "apps/card-game/src",
-      "prefix": "interview-pan-bubr",
+      "prefix": "card-game",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -56,8 +56,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "card-game:build",
-            "proxyConfig": "apps/card-game/src/proxy.conf.json"
+            "browserTarget": "card-game:build"
           },
           "configurations": {
             "production": {
