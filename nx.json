@@ -29,6 +29,15 @@
     "card-game-e2e": {
       "tags": [],
       "implicitDependencies": ["card-game"]
+    },
+    "welcome": {
+      "tags": []
+    },
+    "game": {
+      "tags": []
+    },
+    "summary": {
+      "tags": []
     }
   }
 }

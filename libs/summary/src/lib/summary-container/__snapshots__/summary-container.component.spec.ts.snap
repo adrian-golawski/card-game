@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SummaryContainerComponent should match the snapshot 1`] = `
+<ng-component>
+  <card-game-summary-container>
+    <p>
+      summary-container works!
+    </p>
+  </card-game-summary-container>
+</ng-component>
+`;

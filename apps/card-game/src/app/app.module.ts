@@ -1,8 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { GameModule } from '@card-game/game';
+import { SummaryModule } from '@card-game/summary';
+import { WelcomeModule } from '@card-game/welcome';
 
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 import { routes } from './routes';
 
 @NgModule({
@@ -13,6 +16,9 @@ import { routes } from './routes';
       initialNavigation: 'enabled',
       scrollPositionRestoration: 'enabled',
     }),
+    WelcomeModule,
+    GameModule,
+    SummaryModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

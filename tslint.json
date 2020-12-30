@@ -37,7 +37,6 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
-    "no-inferrable-types": [true, "ignore-params"],
     "no-misused-new": true,
     "no-non-null-assertion": true,
     "no-shadowed-variable": true,
@@ -79,6 +78,65 @@
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
-    "use-pipe-transform-interface": true
+    "use-pipe-transform-interface": true,
+
+    "max-line-length": [true, 120],
+    "array-type": [true, "array"],
+    "await-promise": true,
+    "ban-comma-operator": true,
+    "curly": true,
+    "eofline": true,
+    "file-name-casing": [true, "kebab-case"],
+    "newline-before-return": true,
+    "no-any": true,
+    "no-conditional-assignment": true,
+    "no-duplicate-imports": true,
+    "no-duplicate-switch-case": true,
+    "no-dynamic-delete": true,
+    "no-floating-promises": false,
+    "no-invalid-template-strings": true,
+    "no-magic-numbers": [true, -1, 0, 1],
+    "no-namespace": true,
+    "no-parameter-reassignment": true,
+    "no-require-imports": true,
+    "no-sparse-arrays": true,
+    "no-this-assignment": true,
+    "no-unbound-method": true,
+    "no-unsafe-any": false,
+    "number-literal-format": true,
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true,
+        "groups": [
+          {
+            "name": "scoped_packages",
+            "match": "^@",
+            "order": 1
+          },
+          {
+            "name": "absolute_paths",
+            "match": "^[a-zA-Z]",
+            "order": 2
+          },
+          {
+            "name": "relative_paths",
+            "match": "^[.][.]?",
+            "order": 3
+          }
+        ]
+      }
+    ],
+    "prefer-readonly": true,
+    "prefer-template": [true, "allow-single-concat"],
+    "promise-function-async": false,
+    "restrict-plus-operands": true,
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "property-declaration",
+      "member-variable-declaration"
+    ]
   }
 }

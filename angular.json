@@ -117,6 +117,84 @@
           }
         }
       }
+    },
+    "welcome": {
+      "projectType": "library",
+      "root": "libs/welcome",
+      "sourceRoot": "libs/welcome/src",
+      "prefix": "card-game",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/welcome/tsconfig.lib.json",
+              "libs/welcome/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/welcome/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/welcome"],
+          "options": {
+            "jestConfig": "libs/welcome/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "game": {
+      "projectType": "library",
+      "root": "libs/game",
+      "sourceRoot": "libs/game/src",
+      "prefix": "card-game",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/game/tsconfig.lib.json",
+              "libs/game/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/game/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/game"],
+          "options": {
+            "jestConfig": "libs/game/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "summary": {
+      "projectType": "library",
+      "root": "libs/summary",
+      "sourceRoot": "libs/summary/src",
+      "prefix": "card-game",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/summary/tsconfig.lib.json",
+              "libs/summary/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/summary/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/summary"],
+          "options": {
+            "jestConfig": "libs/summary/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
