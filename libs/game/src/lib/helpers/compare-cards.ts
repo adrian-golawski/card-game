@@ -1,4 +1,4 @@
-import { Card, CardValue } from '../interfaces/deck-of-cards-api';
+import { Card, CardValue } from '@card-game/cards';
 
 const CARD_ORDER = {
   [CardValue.ACE]: 1,

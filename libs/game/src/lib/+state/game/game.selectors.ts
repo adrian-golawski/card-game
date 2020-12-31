@@ -6,7 +6,7 @@ export const getGameState = createFeatureSelector<GamePartialState, State>(
   GAME_FEATURE_KEY
 );
 
-export const getDeckLoaded = createSelector(
+export const getScore = createSelector(
   getGameState,
-  (state: State) => state.deckLoaded
+  (state: State) => state.score
 );

@@ -1,4 +1,5 @@
-import { Card, CardValue } from '../interfaces/deck-of-cards-api';
+import { Card, CardValue } from '@card-game/cards';
+
 import { compareCards } from './compare-cards';
 
 describe('compareCards', () => {

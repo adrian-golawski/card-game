@@ -1,30 +1,32 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { Action, createReducer } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 
-import { GameEntity } from './game.models';
+import * as GameActions from './game.actions';
+export const GAME_FEATURE_KEY = 'game';
 
-export const GAME_FEATURE_KEY = 'card';
-
-export interface State extends EntityState<GameEntity> {
-  deckLoaded: boolean;
-  selectedId?: number;
-  error?: Error;
+export interface State {
+  score: number;
+  gameActive?: boolean;
+  turnsLeft?: number;
 }
 
 export interface GamePartialState {
   readonly [GAME_FEATURE_KEY]: State;
 }
 
-export const cardAdapter: EntityAdapter<GameEntity> = createEntityAdapter<
-  GameEntity
->();
+export const initialState: State = {
+  score: 0,
+};
 
-export const initialState: State = cardAdapter.getInitialState({
-  deckLoaded: false,
-});
+const gamesReducer = createReducer(
+  initialState,
+  on(GameActions.startNewGame, (state) => ({
+    ...state,
+    score: 0,
+    gameActive: true,
+    turnsLeft: 30,
+  }))
+);
 
-const gamesReducer = createReducer(initialState);
-
-export function reducer(state: State | undefined, action: Action): State {
+export function reducer(state: State, action: Action): State {
   return gamesReducer(state, action);
 }

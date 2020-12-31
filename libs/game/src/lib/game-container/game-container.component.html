@@ -1,9 +1,11 @@
 <div>Remaining cards: {{ remaining$ | async }}</div>
 <div>Played Cards: [{{ playedCards$ | async }}]</div>
 
-<button>Draw new Card</button>
+<button [disabled]="false">Draw new Card</button>
 
-<div *ngIf="cardPlayed$ | async">
-  <button>Bet higher</button>
-  <button>Bet lower</button>
+<div>
+  <button [disabled]="false">Bet lower</button>
+  <button [disabled]="false">Bet higher</button>
 </div>
+
+<div>{{ score$ | async }}</div>

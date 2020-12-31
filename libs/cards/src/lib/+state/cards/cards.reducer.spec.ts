@@ -28,7 +28,6 @@ describe('Cards Reducer', () => {
         const action = CardActions.getNewDeck();
 
         const result: State = reducer(initialState, action);
-        console.log(initialState);
         expect(result.deckLoaded).toEqual(false);
         expect(result.error).toEqual(undefined);
       });

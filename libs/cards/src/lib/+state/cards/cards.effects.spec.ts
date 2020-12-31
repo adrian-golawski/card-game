@@ -64,7 +64,7 @@ describe('CardsEffects', () => {
           deck: {
             id: '3p40paa87x90',
             remaining: 52,
-            playedCards: []
+            playedCards: [],
           },
         }),
       });

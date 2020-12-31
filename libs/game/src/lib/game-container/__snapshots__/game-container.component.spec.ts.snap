@@ -12,7 +12,17 @@ exports[`GameContainerComponent should match the snapshot 1`] = `
     <button>
       Draw new Card
     </button>
-    
+    <div>
+      <button>
+        Bet lower
+      </button>
+      <button>
+        Bet higher
+      </button>
+    </div>
+    <div>
+      0
+    </div>
   </card-game-game-container>
 </ng-component>
 `;
@@ -29,7 +39,17 @@ exports[`GameContainerComponent should match the snapshot with existing played c
     <button>
       Draw new Card
     </button>
-    
+    <div>
+      <button>
+        Bet lower
+      </button>
+      <button>
+        Bet higher
+      </button>
+    </div>
+    <div>
+      0
+    </div>
   </card-game-game-container>
 </ng-component>
 `;
