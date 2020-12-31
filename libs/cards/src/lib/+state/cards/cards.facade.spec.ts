@@ -8,6 +8,7 @@ import { NxModule } from '@nrwl/angular';
 import { CardsEffects } from './cards.effects';
 import { CardsFacade } from './cards.facade';
 import { CARDS_FEATURE_KEY, reducer, State } from './cards.reducer';
+import { Router } from '@angular/router';
 
 interface TestSchema {
   cards: State;
@@ -31,6 +32,10 @@ describe('CardsFacade', () => {
             useValue: {
               get: jest.fn(),
             },
+          },
+          {
+            provide: Router,
+            useValue: {},
           },
         ],
       })

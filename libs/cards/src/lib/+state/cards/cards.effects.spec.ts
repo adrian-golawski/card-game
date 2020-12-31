@@ -10,11 +10,13 @@ import { Observable, of } from 'rxjs';
 import { CardsService } from '../../services/cards.service';
 import * as CardActions from './cards.actions';
 import { CardsEffects } from './cards.effects';
+import { Router } from '@angular/router';
 
 describe('CardsEffects', () => {
   let actions: Observable<Action>;
   let effects: CardsEffects;
   let cardsService: CardsService;
+  let router: Router;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,16 +39,24 @@ describe('CardsEffects', () => {
             ),
           },
         },
+        {
+          provide: Router,
+          useValue: {
+            navigate: jest.fn(),
+          },
+        },
       ],
     });
 
     effects = TestBed.inject(CardsEffects);
     cardsService = TestBed.inject(CardsService);
+    router = TestBed.inject(Router);
   });
 
-  describe('startNewGame$', () => {
+  describe('createNewDeck$', () => {
     it('should request new deck of cards', () => {
       const { getNewDeck } = cardsService;
+      const { navigate } = router;
       actions = hot('-a-|', { a: CardActions.getNewDeck() });
 
       const expected = hot('-a-|', {
@@ -59,6 +69,7 @@ describe('CardsEffects', () => {
       });
 
       expect(effects.createNewDeck$).toBeObservable(expected);
+      expect(navigate).toBeCalledWith(['game']);
       expect(getNewDeck).toBeCalled();
     });
   });

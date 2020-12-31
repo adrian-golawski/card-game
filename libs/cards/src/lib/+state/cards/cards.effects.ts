@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { CreateDeckResponse } from '../../interfaces/deck-of-cards-api';
 import { CardsService } from '../../services/cards.service';
@@ -15,7 +16,8 @@ import { DeckEntity } from './cards.models';
 export class CardsEffects {
   constructor(
     private readonly actions$: Actions,
-    private readonly cardService: CardsService
+    private readonly cardService: CardsService,
+    private readonly router: Router
   ) {}
 
   public createNewDeck$: Observable<Action> = createEffect(() =>
@@ -25,7 +27,10 @@ export class CardsEffects {
         run: (a) =>
           this.cardService.getNewDeck().pipe(
             map((deck) => this.mapDeckResponseToDeckEntity(deck)),
-            map((deck) => CardActions.getNewDeckSuccess({ deck }))
+            map((deck) => CardActions.getNewDeckSuccess({ deck })),
+            tap(() => {
+              this.router.navigate(['game']);
+            })
           ),
         onError: (a: Action, error: Error) =>
           CardActions.getNewDeckFailure({ error }),
