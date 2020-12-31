@@ -16,3 +16,20 @@ exports[`GameContainerComponent should match the snapshot 1`] = `
   </card-game-game-container>
 </ng-component>
 `;
+
+exports[`GameContainerComponent should match the snapshot with existing played cards 1`] = `
+<ng-component>
+  <card-game-game-container>
+    <div>
+      Remaining cards: 1
+    </div>
+    <div>
+      Played Cards: [H2]
+    </div>
+    <button>
+      Draw new Card
+    </button>
+    
+  </card-game-game-container>
+</ng-component>
+`;
