@@ -45,7 +45,7 @@ export class CardsEffects {
     return {
       id: deck_id,
       remaining,
-      playedCards: []
+      playedCards: [],
     };
   }
 }
