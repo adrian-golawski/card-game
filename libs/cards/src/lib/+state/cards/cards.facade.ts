@@ -3,9 +3,9 @@ import { select, Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
 
+import * as CardsActions from './cards.actions';
 import * as fromCards from './cards.reducer';
 import * as CardsSelectors from './cards.selectors';
-import * as CardsActions from './cards.actions';
 
 @Injectable()
 export class CardsFacade {

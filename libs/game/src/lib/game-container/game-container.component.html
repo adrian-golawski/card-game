@@ -1,1 +1,9 @@
-<p>game-container works!</p>
+<div>Remaining cards: {{ remaining$ | async }}</div>
+<div>Played Cards: [{{ playedCards$ | async }}]</div>
+
+<button>Draw new Card</button>
+
+<div *ngIf="cardPlayed$ | async">
+  <button>Bet higher</button>
+  <button>Bet lower</button>
+</div>

@@ -3,9 +3,16 @@
 exports[`GameContainerComponent should match the snapshot 1`] = `
 <ng-component>
   <card-game-game-container>
-    <p>
-      game-container works!
-    </p>
+    <div>
+      Remaining cards: 1
+    </div>
+    <div>
+      Played Cards: []
+    </div>
+    <button>
+      Draw new Card
+    </button>
+    
   </card-game-game-container>
 </ng-component>
 `;
