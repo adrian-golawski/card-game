@@ -12,6 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
+import { DeckGuard } from './deck.guard';
 import { routes } from './routes';
 
 @NgModule({
@@ -39,7 +40,7 @@ import { routes } from './routes';
     SummaryModule,
     CardsModule,
   ],
-  providers: [],
+  providers: [DeckGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
