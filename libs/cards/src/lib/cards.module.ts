@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { CardsEffects } from './+state/cards2/cards.effects';
-import { CardsFacade } from './+state/cards2/cards.facade';
-import * as fromCards from './+state/cards2/cards.reducer';
+import { CardsEffects } from './+state/cards/cards.effects';
+import { CardsFacade } from './+state/cards/cards.facade';
+import * as fromCards from './+state/cards/cards.reducer';
 import { CardsService } from './services/cards.service';
 
 @NgModule({

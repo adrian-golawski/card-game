@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { CardsModule } from '@card-game/cards';
 import { GameModule } from '@card-game/game';
 import { SummaryModule } from '@card-game/summary';
 import { WelcomeModule } from '@card-game/welcome';
@@ -21,15 +22,22 @@ import { routes } from './routes';
       initialNavigation: 'enabled',
       scrollPositionRestoration: 'enabled',
     }),
-    WelcomeModule,
-    GameModule,
-    SummaryModule,
-    StoreModule.forRoot({ router: routerReducer }),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot(
+      { router: routerReducer },
+      {
+        runtimeChecks: {
+          strictActionImmutability: true,
+          strictStateImmutability: true,
+        },
+      }
+    ),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule.forRoot(),
+    WelcomeModule,
+    GameModule,
+    SummaryModule,
+    CardsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

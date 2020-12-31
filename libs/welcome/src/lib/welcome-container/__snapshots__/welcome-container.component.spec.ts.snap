@@ -1,11 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`WelcomeContainerComponent should match the snapshot 1`] = `
+exports[`WelcomeContainerComponent should match the snapshot when deck is loaded 1`] = `
 <ng-component>
   <card-game-welcome-container>
-    <p>
-      welcome-container works!
-    </p>
+    
+    <button>
+      Start New Game
+    </button>
+  </card-game-welcome-container>
+</ng-component>
+`;
+
+exports[`WelcomeContainerComponent should match the snapshot when deck is not loaded 1`] = `
+<ng-component>
+  <card-game-welcome-container>
+    
+    <button>
+      Start New Game
+    </button>
   </card-game-welcome-container>
 </ng-component>
 `;

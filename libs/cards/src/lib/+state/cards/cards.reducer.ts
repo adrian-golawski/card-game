@@ -6,8 +6,8 @@ import { DeckEntity } from './cards.models';
 export const CARDS_FEATURE_KEY = 'card';
 
 export interface State extends EntityState<DeckEntity> {
+  deckLoaded: boolean;
   selectedId?: number;
-  loaded: boolean;
   error?: Error;
 }
 
@@ -20,7 +20,7 @@ export const cardAdapter: EntityAdapter<DeckEntity> = createEntityAdapter<
 >();
 
 export const initialState: State = cardAdapter.getInitialState({
-  loaded: false,
+  deckLoaded: false,
 });
 
 const cardsReducer = createReducer(initialState);
