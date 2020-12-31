@@ -1,4 +1,5 @@
 import { CardsFacade } from '@card-game/cards';
+import { GameFacade } from '@card-game/game';
 import { WelcomeContainerComponent, WelcomeModule } from '@card-game/welcome';
 
 import { of } from 'rxjs';
@@ -14,6 +15,12 @@ describe('WelcomeContainerComponent', () => {
           provide: CardsFacade,
           useValue: {
             deckLoaded: of(false),
+          },
+        },
+        {
+          provide: GameFacade,
+          useValue: {
+            startNewGame: jest.fn(),
           },
         },
       ]

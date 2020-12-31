@@ -11,7 +11,7 @@
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
-    "check": "nx format:write; nx affected:lint --fix; nx affected:test; nx affected:e2e",
+    "check": "nx format:write --base=$(git rev-parse HEAD~1); nx affected:lint --fix --base=$(git rev-parse HEAD~1); nx affected:test --base=$(git rev-parse HEAD~1); nx affected:e2e --base=$(git rev-parse HEAD~1)",
     "affected:apps": "nx affected:apps",
     "affected:libs": "nx affected:libs",
     "affected:build": "nx affected:build",
