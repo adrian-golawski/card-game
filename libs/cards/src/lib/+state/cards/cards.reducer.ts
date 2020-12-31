@@ -1,13 +1,14 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { Action, createReducer } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
 
+import * as CardActions from './cards.actions';
 import { DeckEntity } from './cards.models';
 
 export const CARDS_FEATURE_KEY = 'card';
 
 export interface State extends EntityState<DeckEntity> {
   deckLoaded: boolean;
-  selectedId?: number;
+  selectedId?: string;
   error?: Error;
 }
 
@@ -23,7 +24,25 @@ export const initialState: State = cardAdapter.getInitialState({
   deckLoaded: false,
 });
 
-const cardsReducer = createReducer(initialState);
+const cardsReducer = createReducer(
+  initialState,
+  on(CardActions.getNewDeck, (state) =>
+    cardAdapter.removeAll({
+      ...state,
+      deckLoaded: false,
+      error: null,
+    })
+  ),
+  on(CardActions.getNewDeckSuccess, (state, { deck }) =>
+    cardAdapter.setOne(deck, {
+      ...state,
+      selectedId: deck.id,
+      deckLoaded: true,
+      error: null,
+    })
+  ),
+  on(CardActions.getNewDeckFailure, (state, { error }) => ({ ...state, error }))
+);
 
 export function reducer(state: State | undefined, action: Action): State {
   return cardsReducer(state, action);

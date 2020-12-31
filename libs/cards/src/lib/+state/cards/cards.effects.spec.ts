@@ -3,14 +3,18 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
 import { DataPersistence, NxModule } from '@nrwl/angular';
+import { hot } from '@nrwl/angular/testing';
 
 import { Observable, of } from 'rxjs';
 
+import { CardsService } from '../../services/cards.service';
+import * as CardActions from './cards.actions';
 import { CardsEffects } from './cards.effects';
 
 describe('CardsEffects', () => {
-  const actions: Observable<Action> = of();
+  let actions: Observable<Action>;
   let effects: CardsEffects;
+  let cardsService: CardsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -20,13 +24,42 @@ describe('CardsEffects', () => {
         DataPersistence,
         provideMockActions(() => actions),
         provideMockStore(),
+        {
+          provide: CardsService,
+          useValue: {
+            getNewDeck: jest.fn(() =>
+              of({
+                success: true,
+                deck_id: '3p40paa87x90',
+                shuffled: true,
+                remaining: 52,
+              })
+            ),
+          },
+        },
       ],
     });
 
     effects = TestBed.inject(CardsEffects);
+    cardsService = TestBed.inject(CardsService);
   });
 
-  it('is defined', () => {
-    expect(effects).toBeDefined();
+  describe('startNewGame$', () => {
+    it('should request new deck of cards', () => {
+      const { getNewDeck } = cardsService;
+      actions = hot('-a-|', { a: CardActions.getNewDeck() });
+
+      const expected = hot('-a-|', {
+        a: CardActions.getNewDeckSuccess({
+          deck: {
+            id: '3p40paa87x90',
+            remaining: 52,
+          },
+        }),
+      });
+
+      expect(effects.createNewDeck$).toBeObservable(expected);
+      expect(getNewDeck).toBeCalled();
+    });
   });
 });

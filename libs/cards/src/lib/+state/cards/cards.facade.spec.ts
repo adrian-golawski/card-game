@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { EffectsModule } from '@ngrx/effects';
@@ -23,7 +24,15 @@ describe('CardsFacade', () => {
           StoreModule.forFeature(CARDS_FEATURE_KEY, reducer),
           EffectsModule.forFeature([CardsEffects]),
         ],
-        providers: [CardsFacade],
+        providers: [
+          CardsFacade,
+          {
+            provide: HttpClient,
+            useValue: {
+              get: jest.fn(),
+            },
+          },
+        ],
       })
       class CustomFeatureModule {}
 

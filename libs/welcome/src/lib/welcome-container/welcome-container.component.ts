@@ -9,14 +9,12 @@ import { Observable } from 'rxjs';
   templateUrl: './welcome-container.component.html',
   styleUrls: ['./welcome-container.component.scss'],
 })
-export class WelcomeContainerComponent implements OnInit {
+export class WelcomeContainerComponent {
   existingDeck$: Observable<boolean> = this.cardsFacade.deckLoaded$;
   constructor(
     private readonly cardsFacade: CardsFacade,
     private readonly gameFacade: GameFacade
   ) {}
-
-  ngOnInit(): void {}
 
   startGame(): void {
     this.gameFacade.startNewGame();

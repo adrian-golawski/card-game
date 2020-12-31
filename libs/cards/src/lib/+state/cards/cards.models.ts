@@ -1,4 +1,5 @@
 export interface DeckEntity {
-  id: number;
+  id: string;
+  remaining: number;
   playedCards?: [];
 }
