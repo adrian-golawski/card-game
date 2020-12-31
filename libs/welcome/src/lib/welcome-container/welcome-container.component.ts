@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CardsFacade } from '@card-game/cards';
-import { GameFacade } from '@card-game/game';
 
 import { Observable } from 'rxjs';
 
@@ -11,12 +10,9 @@ import { Observable } from 'rxjs';
 })
 export class WelcomeContainerComponent {
   existingDeck$: Observable<boolean> = this.cardsFacade.deckLoaded$;
-  constructor(
-    private readonly cardsFacade: CardsFacade,
-    private readonly gameFacade: GameFacade
-  ) {}
+  constructor(private readonly cardsFacade: CardsFacade) {}
 
-  startGame(): void {
-    this.gameFacade.startNewGame();
+  loadNewDeck(): void {
+    this.cardsFacade.loadDeck();
   }
 }

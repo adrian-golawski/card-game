@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import * as fromCards from './cards.reducer';
 import * as CardsSelectors from './cards.selectors';
+import * as CardsActions from './cards.actions';
 
 @Injectable()
 export class CardsFacade {
@@ -12,4 +13,8 @@ export class CardsFacade {
     select(CardsSelectors.getDeckLoaded)
   );
   constructor(private readonly store: Store<fromCards.CardsPartialState>) {}
+
+  loadDeck(): void {
+    this.store.dispatch(CardsActions.getNewDeck());
+  }
 }

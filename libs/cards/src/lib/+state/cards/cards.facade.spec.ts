@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
 import { NxModule } from '@nrwl/angular';
@@ -8,7 +9,6 @@ import { NxModule } from '@nrwl/angular';
 import { CardsEffects } from './cards.effects';
 import { CardsFacade } from './cards.facade';
 import { CARDS_FEATURE_KEY, reducer, State } from './cards.reducer';
-import { Router } from '@angular/router';
 
 interface TestSchema {
   cards: State;

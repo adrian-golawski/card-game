@@ -7,8 +7,4 @@ import * as fromGame from './game.reducer';
 @Injectable()
 export class GameFacade {
   constructor(private readonly store: Store<fromGame.GamePartialState>) {}
-
-  startNewGame(): void {
-    this.store.dispatch(GameActions.startNewGame());
-  }
 }
