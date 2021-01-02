@@ -1,2 +1,2 @@
-<button *ngIf="existingDeck$ | async">Continue Game</button>
-<button (click)="loadNewDeck()">Start New Game</button>
+<button *ngIf="gameInProgress$ | async">Continue Game</button>
+<button (click)="startNewGame()">Start New Game</button>

@@ -10,3 +10,13 @@ export const getScore = createSelector(
   getGameState,
   (state: State) => state.score
 );
+
+export const gameInProgress = createSelector(
+  getGameState,
+  (state: State) => state.gameActive
+);
+
+export const roundsLeft = createSelector(
+  getGameState,
+  (state: State) => state.roundsLeft
+);

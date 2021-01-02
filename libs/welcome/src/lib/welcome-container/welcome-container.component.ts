@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CardsFacade } from '@card-game/cards';
+import { GameFacade } from '@card-game/game';
 
 import { Observable } from 'rxjs';
 
@@ -9,10 +9,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./welcome-container.component.scss'],
 })
 export class WelcomeContainerComponent {
-  existingDeck$: Observable<boolean> = this.cardsFacade.deckLoaded$;
-  constructor(private readonly cardsFacade: CardsFacade) {}
+  gameInProgress$: Observable<boolean> = this.gameFacade.gameInProgress$;
+  constructor(private readonly gameFacade: GameFacade) {}
 
-  loadNewDeck(): void {
-    this.cardsFacade.loadDeck();
+  startNewGame(): void {
+    this.gameFacade.startNewGame();
   }
 }

@@ -26,22 +26,23 @@ export const initialState: State = cardAdapter.getInitialState({
 
 const cardsReducer = createReducer(
   initialState,
-  on(CardActions.getNewDeck, (state) =>
+  on(CardActions.createNewDeck, (state) =>
     cardAdapter.removeAll({
       ...state,
       deckLoaded: false,
-      error: null,
     })
   ),
-  on(CardActions.getNewDeckSuccess, (state, { deck }) =>
+  on(CardActions.createNewDeckSuccess, (state, { deck }) =>
     cardAdapter.setOne(deck, {
       ...state,
       selectedId: deck.id,
       deckLoaded: true,
-      error: null,
     })
   ),
-  on(CardActions.getNewDeckFailure, (state, { error }) => ({ ...state, error }))
+  on(CardActions.createNewDeckFailure, (state, { error }) => ({
+    ...state,
+    error,
+  }))
 );
 
 export function reducer(state: State | undefined, action: Action): State {

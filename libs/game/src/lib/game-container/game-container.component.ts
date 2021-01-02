@@ -12,7 +12,7 @@ import { GameFacade } from '../+state/game/game.facade';
   styleUrls: ['./game-container.component.scss'],
 })
 export class GameContainerComponent {
-  remaining$: Observable<number> = this.cardsFacade.remaining$;
+  roundsLeft$: Observable<number> = this.gameFacade.roundsLeft$;
   playedCards$: Observable<string> = this.cardsFacade.playedCards$.pipe(
     map((cards) => cards.map((card) => card.code).join(','))
   );

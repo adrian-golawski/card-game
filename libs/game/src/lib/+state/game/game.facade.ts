@@ -10,6 +10,12 @@ import * as GameSelectors from './game.selectors';
 @Injectable()
 export class GameFacade {
   score$: Observable<number> = this.store.pipe(select(GameSelectors.getScore));
+  gameInProgress$: Observable<boolean> = this.store.pipe(
+    select(GameSelectors.gameInProgress)
+  );
+  roundsLeft$: Observable<number> = this.store.pipe(
+    select(GameSelectors.roundsLeft)
+  );
 
   constructor(private readonly store: Store<fromGame.GamePartialState>) {}
 

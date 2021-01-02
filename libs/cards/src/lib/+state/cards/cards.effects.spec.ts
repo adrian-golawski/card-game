@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { CardValue } from '@card-game/cards';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
@@ -16,7 +16,6 @@ describe('CardsEffects', () => {
   let actions: Observable<Action>;
   let effects: CardsEffects;
   let cardsService: CardsService;
-  let router: Router;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,12 +36,18 @@ describe('CardsEffects', () => {
                 remaining: 52,
               })
             ),
-          },
-        },
-        {
-          provide: Router,
-          useValue: {
-            navigate: jest.fn(),
+            drawCardFromDeck: jest.fn(() =>
+              of({
+                cards: [
+                  {
+                    image: 'https://deckofcardsapi.com/static/img/KH.png',
+                    value: CardValue.KING,
+                    suit: 'HEARTS',
+                    code: 'KH',
+                  },
+                ],
+              })
+            ),
           },
         },
       ],
@@ -50,27 +55,31 @@ describe('CardsEffects', () => {
 
     effects = TestBed.inject(CardsEffects);
     cardsService = TestBed.inject(CardsService);
-    router = TestBed.inject(Router);
   });
 
   describe('createNewDeck$', () => {
     it('should request new deck of cards', () => {
       const { getNewDeck } = cardsService;
-      const { navigate } = router;
-      actions = hot('-a-|', { a: CardActions.getNewDeck() });
+      actions = hot('-a-|', { a: CardActions.createNewDeck() });
 
       const expected = hot('-a-|', {
-        a: CardActions.getNewDeckSuccess({
+        a: CardActions.createNewDeckSuccess({
           deck: {
             id: '3p40paa87x90',
             remaining: 52,
-            playedCards: [],
+            playedCards: [
+              {
+                image: 'https://deckofcardsapi.com/static/img/KH.png',
+                value: CardValue.KING,
+                suit: 'HEARTS',
+                code: 'KH',
+              },
+            ],
           },
         }),
       });
 
       expect(effects.createNewDeck$).toBeObservable(expected);
-      expect(navigate).toBeCalledWith(['game']);
       expect(getNewDeck).toBeCalled();
     });
   });

@@ -1,37 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GameContainerComponent should match the snapshot 1`] = `
-<ng-component>
-  <card-game-game-container>
-    <div>
-      Remaining cards: 1
-    </div>
-    <div>
-      Played Cards: []
-    </div>
-    <button>
-      Draw new Card
-    </button>
-    <div>
-      <button>
-        Bet lower
-      </button>
-      <button>
-        Bet higher
-      </button>
-    </div>
-    <div>
-      0
-    </div>
-  </card-game-game-container>
-</ng-component>
-`;
-
 exports[`GameContainerComponent should match the snapshot with existing played cards 1`] = `
 <ng-component>
   <card-game-game-container>
     <div>
-      Remaining cards: 1
+      Rounds left: 30
     </div>
     <div>
       Played Cards: [H2]

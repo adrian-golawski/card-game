@@ -12,51 +12,31 @@ describe('GameContainerComponent', () => {
   beforeEach(() => {
     shallow = new Shallow(GameContainerComponent, GameModule).provideMock([
       {
+        provide: CardsFacade,
+        useValue: {
+          playedCards$: of([
+            {
+              image: '',
+              value: CardValue.ACE,
+              suit: '',
+              code: 'H2',
+            } as Card,
+          ]),
+        },
+      },
+      {
         provide: GameFacade,
         useValue: {
+          // tslint:disable-next-line:no-magic-numbers
+          roundsLeft$: of(30),
           score$: of(0),
-          drawTurn$: of(true),
-          guessTurn$: of(false),
         },
       },
     ]);
   });
 
-  it('should match the snapshot', async () => {
-    const { fixture } = await shallow
-      .provideMock([
-        {
-          provide: CardsFacade,
-          useValue: {
-            remaining$: of(1),
-            playedCards$: of([]),
-          },
-        },
-      ])
-      .render();
-
-    expect(fixture).toMatchSnapshot();
-  });
-
   it('should match the snapshot with existing played cards', async () => {
-    const { fixture } = await shallow
-      .provideMock([
-        {
-          provide: CardsFacade,
-          useValue: {
-            remaining$: of(1),
-            playedCards$: of([
-              {
-                image: '',
-                value: CardValue.ACE,
-                suit: '',
-                code: 'H2',
-              } as Card,
-            ]),
-          },
-        },
-      ])
-      .render();
+    const { fixture } = await shallow.render();
 
     expect(fixture).toMatchSnapshot();
   });

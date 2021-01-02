@@ -6,7 +6,7 @@ export const GAME_FEATURE_KEY = 'game';
 export interface State {
   score: number;
   gameActive?: boolean;
-  turnsLeft?: number;
+  roundsLeft?: number;
 }
 
 export interface GamePartialState {
@@ -19,11 +19,11 @@ export const initialState: State = {
 
 const gamesReducer = createReducer(
   initialState,
-  on(GameActions.startNewGame, (state) => ({
+  on(GameActions.startNewGameSuccess, (state) => ({
     ...state,
     score: 0,
     gameActive: true,
-    turnsLeft: 30,
+    roundsLeft: 30,
   }))
 );
 

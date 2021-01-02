@@ -40,18 +40,20 @@ export const getPlayedCards = createAction(
   props<{ deckId: string }>()
 );
 export const getPlayedCardsSuccess = createAction(
-  '[Cards] Get played Cards',
+  '[Cards] Get played Cards Success',
   props<{ playedCards: Card[] }>()
 );
-export const getPlayedCardsFailure = createAction('[Cards] Get played Cards');
+export const getPlayedCardsFailure = createAction(
+  '[Cards] Get played Cards Failure'
+);
 
-export const getNewDeck = createAction('[Cards] Get New Deck');
-export const getNewDeckSuccess = createAction(
-  '[Cards] Get New Deck Success',
+export const createNewDeck = createAction('[Cards] Create New Deck');
+export const createNewDeckSuccess = createAction(
+  '[Cards] Create New Deck Success',
   props<{ deck: DeckEntity }>()
 );
-export const getNewDeckFailure = createAction(
-  '[Cards] Get New Deck',
+export const createNewDeckFailure = createAction(
+  '[Cards] Create New Deck Failure',
   props<{ error: Error }>()
 );
 

@@ -26,7 +26,7 @@ export class CardsFacade {
 
   constructor(private readonly store: Store<fromCards.CardsPartialState>) {}
 
-  loadDeck(): void {
-    this.store.dispatch(CardsActions.getNewDeck());
+  createNewDeck(): void {
+    this.store.dispatch(CardsActions.createNewDeck());
   }
 }

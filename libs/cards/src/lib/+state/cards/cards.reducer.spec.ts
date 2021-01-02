@@ -23,9 +23,9 @@ describe('Cards Reducer', () => {
         selectedId: 'mockId',
       } as State);
 
-    describe('getNewDeck()', () => {
+    describe('createNewDeck()', () => {
       it('should set error and loaded to false', () => {
-        const action = CardActions.getNewDeck();
+        const action = CardActions.createNewDeck();
 
         const result: State = reducer(initialState, action);
         expect(result.deckLoaded).toEqual(false);
@@ -33,12 +33,12 @@ describe('Cards Reducer', () => {
       });
 
       it('should delete existing Deck from state', () => {
-        const action = CardActions.getNewDeck();
+        const action = CardActions.createNewDeck();
 
         const result: State = reducer(stateWithDeckLoaded(), action);
 
         expect(result.deckLoaded).toBe(false);
-        expect(result.error).toEqual(undefined);
+        expect(result.error).toEqual(null);
         expect(result.entities).toEqual({});
       });
     });
@@ -46,11 +46,11 @@ describe('Cards Reducer', () => {
     describe('getNewDeckSuccess()', () => {
       it('should set new Deck', () => {
         const deck = createDeckEntity('newMockId');
-        const action = CardActions.getNewDeckSuccess({ deck });
+        const action = CardActions.createNewDeckSuccess({ deck });
 
         const result: State = reducer(initialState, action);
         expect(result.deckLoaded).toEqual(true);
-        expect(result.error).toEqual(null);
+        expect(result.error).toEqual(undefined);
         expect(result.entities[deck.id]).toEqual(deck);
         expect(result.selectedId).toEqual(deck.id);
       });
@@ -59,7 +59,7 @@ describe('Cards Reducer', () => {
     describe('getNewDeckFailure()', () => {
       it('should set error and restore empty Deck', () => {
         const error = new Error('mockError');
-        const action = CardActions.getNewDeckFailure({ error });
+        const action = CardActions.createNewDeckFailure({ error });
 
         const result: State = reducer(initialState, action);
         expect(result.deckLoaded).toEqual(false);
