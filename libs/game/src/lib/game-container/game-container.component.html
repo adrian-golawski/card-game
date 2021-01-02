@@ -1,7 +1,14 @@
 <div>Rounds left: {{ roundsLeft$ | async }}</div>
 <div>Played Cards: [{{ playedCards$ | async }}]</div>
 
-<button [disabled]="(betGiven$ | async) === false">Draw new Card</button>
+<button
+  [disabled]="
+    (betGiven$ | async) === false || (resultLoading$ | async) === true
+  "
+  (click)="verifyBet()"
+>
+  Draw new Card
+</button>
 
 <div>
   <button

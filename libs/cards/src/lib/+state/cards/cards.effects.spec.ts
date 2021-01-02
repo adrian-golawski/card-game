@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { CardValue } from '@card-game/cards';
+import { CardsFacade, CardValue } from '@card-game/cards';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
@@ -50,6 +50,12 @@ describe('CardsEffects', () => {
             ),
           },
         },
+        {
+          provide: CardsFacade,
+          useValue: {
+            deckId$: of('3p40paa87x90'),
+          },
+        },
       ],
     });
 
@@ -59,7 +65,7 @@ describe('CardsEffects', () => {
 
   describe('createNewDeck$', () => {
     it('should request new deck of cards', () => {
-      const { getNewDeck } = cardsService;
+      const { getNewDeck, drawCardFromDeck } = cardsService;
       actions = hot('-a-|', { a: CardActions.createNewDeck() });
 
       const expected = hot('-a-|', {
@@ -81,6 +87,28 @@ describe('CardsEffects', () => {
 
       expect(effects.createNewDeck$).toBeObservable(expected);
       expect(getNewDeck).toBeCalled();
+      expect(drawCardFromDeck).toBeCalled();
+    });
+  });
+
+  describe('drawNewCard$', () => {
+    it('should request new card for a given deck', () => {
+      const { drawCardFromDeck } = cardsService;
+      actions = hot('-a-|', { a: CardActions.drawNewCard() });
+
+      const expected = hot('-a-|', {
+        a: CardActions.drawNewCardSuccess({
+          card: {
+            image: 'https://deckofcardsapi.com/static/img/KH.png',
+            value: CardValue.KING,
+            suit: 'HEARTS',
+            code: 'KH',
+          },
+        }),
+      });
+
+      expect(effects.drawNewCard$).toBeObservable(expected);
+      expect(drawCardFromDeck).toBeCalled();
     });
   });
 });

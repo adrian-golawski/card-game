@@ -19,6 +19,7 @@ export class GameContainerComponent {
   score$: Observable<number> = this.gameFacade.score$;
   betGiven$: Observable<boolean> = this.gameFacade.betGiven$;
   betLower$: Observable<boolean> = this.gameFacade.betLower$;
+  resultLoading$: Observable<boolean> = this.gameFacade.resultLoading$;
 
   constructor(
     private readonly cardsFacade: CardsFacade,
@@ -27,5 +28,9 @@ export class GameContainerComponent {
 
   giveBet(lower: boolean): void {
     this.gameFacade.giveBet(lower);
+  }
+
+  verifyBet(): void {
+    this.gameFacade.verifyBet();
   }
 }

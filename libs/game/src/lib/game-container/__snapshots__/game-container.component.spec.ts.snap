@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GameContainerComponent should match the snapshot with existing played cards 1`] = `
+exports[`GameContainerComponent should match the snapshot with no bet given 1`] = `
 <ng-component>
   <card-game-game-container>
     <div>
@@ -9,8 +9,11 @@ exports[`GameContainerComponent should match the snapshot with existing played c
     <div>
       Played Cards: [H2]
     </div>
-    <button>
-      Draw new Card
+    <button
+      disabled=""
+    >
+       Draw new Card
+  
     </button>
     <div>
       <button>

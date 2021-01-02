@@ -18,7 +18,7 @@ describe('compareCards', () => {
       value: CardValue.JACK,
     };
 
-    expect(compareCards(cardA, cardB)).toBe(-1);
+    expect(compareCards(cardA.value, cardB.value)).toBe(-1);
   });
 
   it('should return 0 when the cards are equal', () => {
@@ -36,7 +36,7 @@ describe('compareCards', () => {
       value: CardValue.NUM10,
     };
 
-    expect(compareCards(cardA, cardB)).toBe(0);
+    expect(compareCards(cardA.value, cardB.value)).toBe(0);
   });
 
   it('should return 1 when the first card is bigger', () => {
@@ -54,6 +54,6 @@ describe('compareCards', () => {
       value: CardValue.JACK,
     };
 
-    expect(compareCards(cardA, cardB)).toBe(1);
+    expect(compareCards(cardA.value, cardB.value)).toBe(1);
   });
 });

@@ -8,6 +8,7 @@ export const CARDS_FEATURE_KEY = 'card';
 
 export interface State extends EntityState<DeckEntity> {
   deckLoaded: boolean;
+  cardLoading: boolean;
   selectedId?: string;
   error?: Error;
 }
@@ -22,6 +23,7 @@ export const cardAdapter: EntityAdapter<DeckEntity> = createEntityAdapter<
 
 export const initialState: State = cardAdapter.getInitialState({
   deckLoaded: false,
+  cardLoading: false,
 });
 
 const cardsReducer = createReducer(
@@ -41,6 +43,30 @@ const cardsReducer = createReducer(
   ),
   on(CardActions.createNewDeckFailure, (state, { error }) => ({
     ...state,
+    error,
+  })),
+  on(CardActions.drawNewCard, (state) => ({
+    ...state,
+    cardLoading: true,
+    error: null,
+  })),
+  on(CardActions.drawNewCardSuccess, (state, { card }) =>
+    cardAdapter.updateOne(
+      {
+        id: state.selectedId,
+        changes: {
+          playedCards: [...state.entities[state.selectedId].playedCards, card],
+        },
+      },
+      {
+        ...state,
+        cardLoading: false,
+      }
+    )
+  ),
+  on(CardActions.drawCardFailure, (state, { error }) => ({
+    ...state,
+    cardLoading: false,
     error,
   }))
 );

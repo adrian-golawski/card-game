@@ -57,13 +57,14 @@ export const createNewDeckFailure = createAction(
   props<{ error: Error }>()
 );
 
-export const drawCard = createAction('[Cards] Draw Card');
-export const drawCardSuccess = createAction(
-  '[Cards] Draw Card Success',
+export const drawNewCard = createAction('[Cards] Draw New Card');
+
+export const drawNewCardSuccess = createAction(
+  '[Cards] Draw New Card Success',
   props<{ card: Card }>()
 );
 export const drawCardFailure = createAction(
-  '[Cards] Draw Card Failure',
+  '[Cards] Draw New Card Failure',
   props<{ error: Error }>()
 );
 

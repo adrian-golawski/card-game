@@ -16,7 +16,7 @@ const CARD_ORDER = {
   [CardValue.KING]: 13,
 };
 
-export function compareCards({ value: a }: Card, { value: b }: Card): number {
+export function compareCards(a: CardValue, b: CardValue): number {
   if (CARD_ORDER[a] < CARD_ORDER[b]) {
     return -1;
   } else if (CARD_ORDER[a] > CARD_ORDER[b]) {

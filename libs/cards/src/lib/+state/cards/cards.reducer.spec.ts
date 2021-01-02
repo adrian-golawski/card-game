@@ -1,3 +1,4 @@
+import { CardValue } from '@card-game/cards';
 import { Action } from '@ngrx/store';
 
 import * as CardActions from './cards.actions';
@@ -8,6 +9,14 @@ const createDeckEntity = (id: string) =>
   ({
     id,
     remaining: 52,
+    playedCards: [
+      {
+        image: 'https://deckofcardsapi.com/static/img/KH.png',
+        value: CardValue.KING,
+        suit: 'HEARTS',
+        code: 'KH',
+      },
+    ],
   } as DeckEntity);
 
 describe('Cards Reducer', () => {
@@ -19,6 +28,7 @@ describe('Cards Reducer', () => {
         },
         error: null,
         deckLoaded: true,
+        cardLoading: false,
         ids: ['mockId'],
         selectedId: 'mockId',
       } as State);

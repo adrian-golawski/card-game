@@ -21,6 +21,11 @@ export const gameLoading = createSelector(
   (state: State) => state.gameLoading
 );
 
+export const resultLoading = createSelector(
+  getGameState,
+  (state: State) => state.resultLoading
+);
+
 export const roundsLeft = createSelector(
   getGameState,
   (state: State) => state.roundsLeft
@@ -35,3 +40,8 @@ export const betLower = createSelector(
   getGameState,
   (state: State) => state.betLower
 );
+
+export let betDetails = createSelector(getGameState, (state: State) => ({
+  cardValue: state.betCardValue,
+  betLower: state.betLower,
+}));
