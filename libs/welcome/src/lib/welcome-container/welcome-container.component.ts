@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class WelcomeContainerComponent {
   gameInProgress$: Observable<boolean> = this.gameFacade.gameInProgress$;
+  gameLoading$: Observable<boolean> = this.gameFacade.gameLoading$;
   constructor(private readonly gameFacade: GameFacade) {}
 
   startNewGame(): void {

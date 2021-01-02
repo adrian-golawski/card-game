@@ -1,4 +1,3 @@
-import { CardsFacade } from '@card-game/cards';
 import { GameFacade } from '@card-game/game';
 import { WelcomeContainerComponent, WelcomeModule } from '@card-game/welcome';
 
@@ -9,31 +8,49 @@ describe('WelcomeContainerComponent', () => {
   let shallow: Shallow<WelcomeContainerComponent>;
 
   beforeEach(() => {
-    shallow = new Shallow(WelcomeContainerComponent, WelcomeModule).provideMock(
-      [
+    shallow = new Shallow(WelcomeContainerComponent, WelcomeModule);
+  });
+
+  it('should match the snapshot with no game in progress', async () => {
+    const { fixture } = await shallow
+      .provideMock([
         {
           provide: GameFacade,
           useValue: {
             gameInProgress$: of(false),
+            gameLoading$: of(false),
           },
         },
-      ]
-    );
-  });
-
-  it('should match the snapshot when deck is not loaded', async () => {
-    const { fixture } = await shallow.render();
+      ])
+      .render();
 
     expect(fixture).toMatchSnapshot();
   });
 
-  it('should match the snapshot when deck is loaded', async () => {
+  it('should match the snapshot with game in progress', async () => {
     const { fixture } = await shallow
       .provideMock([
         {
-          provide: CardsFacade,
+          provide: GameFacade,
           useValue: {
-            deckLoaded: of(true),
+            gameInProgress$: of(true),
+            gameLoading$: of(false),
+          },
+        },
+      ])
+      .render();
+
+    expect(fixture).toMatchSnapshot();
+  });
+
+  it('should match the snapshot when game is loading', async () => {
+    const { fixture } = await shallow
+      .provideMock([
+        {
+          provide: GameFacade,
+          useValue: {
+            gameInProgress$: of(false),
+            gameLoading$: of(true),
           },
         },
       ])

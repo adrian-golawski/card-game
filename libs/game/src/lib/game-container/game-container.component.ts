@@ -25,7 +25,7 @@ export class GameContainerComponent {
     private readonly gameFacade: GameFacade
   ) {}
 
-  betLower(lower: boolean): void {
-    this.gameFacade.betLower(lower);
+  giveBet(lower: boolean): void {
+    this.gameFacade.giveBet(lower);
   }
 }

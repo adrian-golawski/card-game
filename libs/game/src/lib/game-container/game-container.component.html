@@ -6,13 +6,13 @@
 <div>
   <button
     [disabled]="(betGiven$ | async) && (betLower$ | async) === true"
-    (click)="betLower(true)"
+    (click)="giveBet(true)"
   >
     Bet lower
   </button>
   <button
     [disabled]="(betGiven$ | async) && (betLower$ | async) === false"
-    (click)="betLower(false)"
+    (click)="giveBet(false)"
   >
     Bet higher
   </button>

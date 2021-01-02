@@ -1,2 +1,6 @@
-<button *ngIf="gameInProgress$ | async">Continue Game</button>
-<button (click)="startNewGame()">Start New Game</button>
+<button [disabled]="gameLoading$ | async" *ngIf="gameInProgress$ | async">
+  Continue Game
+</button>
+<button [disabled]="gameLoading$ | async" (click)="startNewGame()">
+  Start New Game
+</button>

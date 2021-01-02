@@ -16,6 +16,11 @@ export const gameInProgress = createSelector(
   (state: State) => state.gameActive
 );
 
+export const gameLoading = createSelector(
+  getGameState,
+  (state: State) => state.gameLoading
+);
+
 export const roundsLeft = createSelector(
   getGameState,
   (state: State) => state.roundsLeft

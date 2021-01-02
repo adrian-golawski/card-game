@@ -1,22 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`WelcomeContainerComponent should match the snapshot when deck is loaded 1`] = `
+exports[`WelcomeContainerComponent should match the snapshot when game is loading 1`] = `
 <ng-component>
   <card-game-welcome-container>
     
-    <button>
-      Start New Game
+    <button
+      disabled=""
+    >
+       Start New Game
+  
     </button>
   </card-game-welcome-container>
 </ng-component>
 `;
 
-exports[`WelcomeContainerComponent should match the snapshot when deck is not loaded 1`] = `
+exports[`WelcomeContainerComponent should match the snapshot with game in progress 1`] = `
 <ng-component>
   <card-game-welcome-container>
     
     <button>
-      Start New Game
+       Continue Game
+  
+    </button>
+    <button>
+       Start New Game
+  
+    </button>
+  </card-game-welcome-container>
+</ng-component>
+`;
+
+exports[`WelcomeContainerComponent should match the snapshot with no game in progress 1`] = `
+<ng-component>
+  <card-game-welcome-container>
+    
+    <button>
+       Start New Game
+  
     </button>
   </card-game-welcome-container>
 </ng-component>
