@@ -3,9 +3,15 @@
 exports[`SummaryContainerComponent should match the snapshot 1`] = `
 <ng-component>
   <card-game-summary-container>
-    <p>
-      summary-container works!
-    </p>
+    <h1>
+      Congratulations!
+    </h1>
+    <h2>
+      Your final score is: 1
+    </h2>
+    <button>
+      Play again
+    </button>
   </card-game-summary-container>
 </ng-component>
 `;

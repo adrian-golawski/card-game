@@ -11,7 +11,11 @@ import * as GameSelectors from './game.selectors';
 
 @Injectable()
 export class GameFacade {
-  score$: Observable<number> = this.store.pipe(select(GameSelectors.getScore));
+  score$: Observable<number> = this.store.pipe(
+    select(GameSelectors.getScore),
+    // tslint:disable-next-line:no-magic-numbers
+    map((score) => score / 10)
+  );
   gameInProgress$: Observable<boolean> = this.store.pipe(
     select(GameSelectors.gameInProgress)
   );
