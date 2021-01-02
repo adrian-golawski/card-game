@@ -6,12 +6,17 @@ export const startNewGameRequest = createAction(
   '[Game] Start New Game Request'
 );
 
-export const startNewGameSuccess = createAction(
-  '[Game] Start New Game Success'
+export const startGameSuccess = createAction(
+  '[Game] Start New Game Success',
+  props<{ rounds: number; score: number }>()
 );
 export const startNewGameFailure = createAction(
   '[Game] Start New Game Failure'
 );
+
+export const continueGame = createAction('[Game] Continue Game');
+
+export const endGame = createAction('[Game] End Game');
 
 export const betGiven = createAction(
   '[Game] Bet given',

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   CardsFacade,
@@ -12,10 +12,13 @@ import { Observable } from 'rxjs';
 import { map, tap, withLatestFrom } from 'rxjs/operators';
 
 import { compareCards } from '../../helpers/compare-cards';
+import { ROUND_COUNT } from '../../tokens';
 import {
+  continueGame,
+  endGame,
+  startGameSuccess,
   startNewGame,
   startNewGameRequest,
-  startNewGameSuccess,
   verifyBet,
   verifyBetFailure,
   verifyBetRequest,
@@ -29,7 +32,8 @@ export class GameEffects {
     private readonly actions: Actions,
     private readonly cardsFacade: CardsFacade,
     private readonly gameFacade: GameFacade,
-    private readonly router: Router
+    private readonly router: Router,
+    @Inject(ROUND_COUNT) private readonly roundCount: number
   ) {}
 
   startNewGame$: Observable<Action> = createEffect(() =>
@@ -44,11 +48,11 @@ export class GameEffects {
     this.actions.pipe(
       ofType(createNewDeckSuccess),
       tap(() => this.router.navigate(['game'])),
-      map(() => startNewGameSuccess())
+      map(() => startGameSuccess({ rounds: this.roundCount, score: 0 }))
     )
   );
 
-  verifyBet$: Observable<Action> = createEffect(() =>
+  verifyBetRequest$: Observable<Action> = createEffect(() =>
     this.actions.pipe(
       ofType(verifyBet),
       withLatestFrom(this.cardsFacade.playedCards$),
@@ -65,16 +69,32 @@ export class GameEffects {
       ofType(drawNewCardSuccess),
       withLatestFrom(this.gameFacade.betDetails$),
       map(([{ card }, betDetails]) => {
-        console.log(card, betDetails);
         const compare = compareCards(card.value, betDetails.cardValue);
 
         if (compare === -1) {
           return verifyBetSuccess({ win: betDetails.betLower });
         } else if (compare === 1) {
           return verifyBetSuccess({ win: !betDetails.betLower });
+        } else {
+          // Specification unclear. I consider the player lucky enough to win this
+          return verifyBetSuccess({ win: true });
         }
+      })
+    )
+  );
 
-        throw new Error('WTF');
+  endGameCheck$: Observable<Action> = createEffect(() =>
+    this.actions.pipe(
+      ofType(verifyBetSuccess),
+      withLatestFrom(this.gameFacade.roundsLeft$),
+      map(([_, roundsLeft]) => {
+        if (roundsLeft > 1) {
+          return continueGame();
+        } else {
+          this.router.navigate(['summary']);
+
+          return endGame();
+        }
       })
     )
   );

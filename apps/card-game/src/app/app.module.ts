@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { CardsModule } from '@card-game/cards';
-import { GameModule } from '@card-game/game';
+import { GameModule, ROUND_COUNT } from '@card-game/game';
 import { SummaryModule } from '@card-game/summary';
 import { WelcomeModule } from '@card-game/welcome';
 import { EffectsModule } from '@ngrx/effects';
@@ -40,7 +40,11 @@ import { routes } from './routes';
     SummaryModule,
     CardsModule,
   ],
-  providers: [DeckGuard],
+  providers: [
+    DeckGuard,
+    // tslint:disable-next-line:no-magic-numbers
+    { provide: ROUND_COUNT, useValue: environment.production ? 30 : 3 },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -2,7 +2,6 @@ import { CardValue } from '@card-game/cards';
 import { Action, createReducer, on } from '@ngrx/store';
 
 import * as GameActions from './game.actions';
-import { roundsLeft } from './game.selectors';
 export const GAME_FEATURE_KEY = 'game';
 
 export interface State {
@@ -33,11 +32,11 @@ const gamesReducer = createReducer(
     ...state,
     gameLoading: true,
   })),
-  on(GameActions.startNewGameSuccess, (state) => ({
+  on(GameActions.startGameSuccess, (state, { score, rounds }) => ({
     ...state,
-    score: 0,
+    score: score,
     gameActive: true,
-    roundsLeft: 30,
+    roundsLeft: rounds,
     gameLoading: false,
   })),
   on(GameActions.betGiven, (state, { lower }) => ({
@@ -56,8 +55,15 @@ const gamesReducer = createReducer(
     betGiven: false,
     betLower: undefined,
     betCardValue: undefined,
-    roundsLeft: state.roundsLeft - 1,
     score: win ? state.score + 1 : state.score,
+  })),
+  on(GameActions.continueGame, (state) => ({
+    ...state,
+    roundsLeft: state.roundsLeft - 1,
+  })),
+  on(GameActions.endGame, (state) => ({
+    ...state,
+    gameActive: false,
   }))
 );
 
