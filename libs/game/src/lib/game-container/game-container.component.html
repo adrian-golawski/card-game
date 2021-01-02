@@ -1,11 +1,21 @@
 <div>Rounds left: {{ roundsLeft$ | async }}</div>
 <div>Played Cards: [{{ playedCards$ | async }}]</div>
 
-<button [disabled]="false">Draw new Card</button>
+<button [disabled]="(betGiven$ | async) === false">Draw new Card</button>
 
 <div>
-  <button [disabled]="false">Bet lower</button>
-  <button [disabled]="false">Bet higher</button>
+  <button
+    [disabled]="(betGiven$ | async) && (betLower$ | async) === true"
+    (click)="betLower(true)"
+  >
+    Bet lower
+  </button>
+  <button
+    [disabled]="(betGiven$ | async) && (betLower$ | async) === false"
+    (click)="betLower(false)"
+  >
+    Bet higher
+  </button>
 </div>
 
-<div>{{ score$ | async }}</div>
+<div>Score: {{ score$ | async }}</div>

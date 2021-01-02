@@ -4,6 +4,8 @@ import * as GameActions from './game.actions';
 export const GAME_FEATURE_KEY = 'game';
 
 export interface State {
+  betGiven: boolean;
+  betLower?: boolean;
   score: number;
   gameActive?: boolean;
   roundsLeft?: number;
@@ -15,6 +17,7 @@ export interface GamePartialState {
 
 export const initialState: State = {
   score: 0,
+  betGiven: false,
 };
 
 const gamesReducer = createReducer(
@@ -24,6 +27,11 @@ const gamesReducer = createReducer(
     score: 0,
     gameActive: true,
     roundsLeft: 30,
+  })),
+  on(GameActions.betLower, (state, { lower }) => ({
+    ...state,
+    betGiven: true,
+    betLower: lower,
   }))
 );
 

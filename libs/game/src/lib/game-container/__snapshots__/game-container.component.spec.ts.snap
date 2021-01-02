@@ -14,14 +14,14 @@ exports[`GameContainerComponent should match the snapshot with existing played c
     </button>
     <div>
       <button>
-        Bet lower
+         Bet lower 
       </button>
       <button>
-        Bet higher
+         Bet higher 
       </button>
     </div>
     <div>
-      0
+      Score: 0
     </div>
   </card-game-game-container>
 </ng-component>

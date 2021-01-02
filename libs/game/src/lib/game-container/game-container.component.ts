@@ -17,8 +17,15 @@ export class GameContainerComponent {
     map((cards) => cards.map((card) => card.code).join(','))
   );
   score$: Observable<number> = this.gameFacade.score$;
+  betGiven$: Observable<boolean> = this.gameFacade.betGiven$;
+  betLower$: Observable<boolean> = this.gameFacade.betLower$;
+
   constructor(
     private readonly cardsFacade: CardsFacade,
     private readonly gameFacade: GameFacade
   ) {}
+
+  betLower(lower: boolean): void {
+    this.gameFacade.betLower(lower);
+  }
 }

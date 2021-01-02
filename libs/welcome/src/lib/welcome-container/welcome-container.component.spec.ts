@@ -1,4 +1,5 @@
 import { CardsFacade } from '@card-game/cards';
+import { GameFacade } from '@card-game/game';
 import { WelcomeContainerComponent, WelcomeModule } from '@card-game/welcome';
 
 import { of } from 'rxjs';
@@ -11,9 +12,9 @@ describe('WelcomeContainerComponent', () => {
     shallow = new Shallow(WelcomeContainerComponent, WelcomeModule).provideMock(
       [
         {
-          provide: CardsFacade,
+          provide: GameFacade,
           useValue: {
-            deckLoaded: of(false),
+            gameInProgress$: of(false),
           },
         },
       ]

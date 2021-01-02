@@ -20,3 +20,13 @@ export const roundsLeft = createSelector(
   getGameState,
   (state: State) => state.roundsLeft
 );
+
+export const betGiven = createSelector(
+  getGameState,
+  (state: State) => state.betGiven
+);
+
+export const betLower = createSelector(
+  getGameState,
+  (state: State) => state.betLower
+);

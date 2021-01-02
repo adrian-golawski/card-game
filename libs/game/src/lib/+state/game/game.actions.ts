@@ -11,3 +11,8 @@ export const startNewGameSuccess = createAction(
 export const startNewGameFailure = createAction(
   '[Game] Start New Game Failure'
 );
+
+export const betLower = createAction(
+  '[Game] Bet lower',
+  props<{ lower: boolean }>()
+);

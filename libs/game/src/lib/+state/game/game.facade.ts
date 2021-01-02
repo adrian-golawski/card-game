@@ -16,10 +16,20 @@ export class GameFacade {
   roundsLeft$: Observable<number> = this.store.pipe(
     select(GameSelectors.roundsLeft)
   );
+  betGiven$: Observable<boolean> = this.store.pipe(
+    select(GameSelectors.betGiven)
+  );
+  betLower$: Observable<boolean> = this.store.pipe(
+    select(GameSelectors.betLower)
+  );
 
   constructor(private readonly store: Store<fromGame.GamePartialState>) {}
 
   startNewGame(): void {
     this.store.dispatch(GameActions.startNewGame());
+  }
+
+  betLower(lower: boolean): void {
+    this.store.dispatch(GameActions.betLower({ lower }));
   }
 }
