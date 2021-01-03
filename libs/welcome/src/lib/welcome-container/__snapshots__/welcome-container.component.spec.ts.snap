@@ -5,6 +5,7 @@ exports[`WelcomeContainerComponent should match the snapshot when game is loadin
   <card-game-welcome-container>
     
     <button
+      data-cy="start-button"
       disabled=""
     >
        Start New Game
@@ -18,11 +19,15 @@ exports[`WelcomeContainerComponent should match the snapshot with game in progre
 <ng-component>
   <card-game-welcome-container>
     
-    <button>
+    <button
+      data-cy="continue-button"
+    >
        Continue Game
   
     </button>
-    <button>
+    <button
+      data-cy="start-button"
+    >
        Start New Game
   
     </button>
@@ -34,7 +39,9 @@ exports[`WelcomeContainerComponent should match the snapshot with no game in pro
 <ng-component>
   <card-game-welcome-container>
     
-    <button>
+    <button
+      data-cy="start-button"
+    >
        Start New Game
   
     </button>
