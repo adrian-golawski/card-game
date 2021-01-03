@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
-import { Card, CardValue } from '../../..';
+import { Card } from '../../interfaces/deck-of-cards-api';
 import * as CardsActions from './cards.actions';
 import * as fromCards from './cards.reducer';
 import * as CardsSelectors from './cards.selectors';
