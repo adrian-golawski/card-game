@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CardsFacade } from '@card-game/cards';
 
 import { Observable } from 'rxjs';
@@ -16,7 +16,10 @@ export class GameContainerComponent {
   playedCards$: Observable<string> = this.cardsFacade.playedCards$.pipe(
     map((cards) => cards.map((card) => card.code).join(','))
   );
-  score$: Observable<number> = this.gameFacade.score$;
+  score$: Observable<number> = this.gameFacade.score$.pipe(
+    // tslint:disable-next-line:no-magic-numbers
+    map((score) => score / 10)
+  );
   betGiven$: Observable<boolean> = this.gameFacade.betGiven$;
   betLower$: Observable<boolean> = this.gameFacade.betLower$;
   resultLoading$: Observable<boolean> = this.gameFacade.resultLoading$;

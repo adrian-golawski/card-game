@@ -6,6 +6,8 @@ export const startNewGameRequest = createAction(
   '[Game] Start New Game Request'
 );
 
+export const startExistingGame = createAction('[Game] Start Existing Game');
+
 export const startGameSuccess = createAction(
   '[Game] Start New Game Success',
   props<{ rounds: number; score: number }>()

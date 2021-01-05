@@ -3,7 +3,6 @@ import { CardValue } from '@card-game/cards';
 import { select, Store } from '@ngrx/store';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import * as GameActions from './game.actions';
 import * as fromGame from './game.reducer';
@@ -11,11 +10,7 @@ import * as GameSelectors from './game.selectors';
 
 @Injectable()
 export class GameFacade {
-  score$: Observable<number> = this.store.pipe(
-    select(GameSelectors.getScore),
-    // tslint:disable-next-line:no-magic-numbers
-    map((score) => score / 10)
-  );
+  score$: Observable<number> = this.store.pipe(select(GameSelectors.getScore));
   gameInProgress$: Observable<boolean> = this.store.pipe(
     select(GameSelectors.gameInProgress)
   );
@@ -56,5 +51,9 @@ export class GameFacade {
 
   verifyBet(): void {
     this.store.dispatch(GameActions.verifyBet());
+  }
+
+  startExistingGame(): void {
+    this.store.dispatch(GameActions.startExistingGame());
   }
 }

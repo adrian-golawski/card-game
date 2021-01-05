@@ -9,7 +9,7 @@ exports[`SummaryContainerComponent should match the snapshot 1`] = `
     <h2
       data-cy="final-score"
     >
-      Your final score is: 1
+      Your final score is: 0.1
     </h2>
     <button
       data-cy="play-again"

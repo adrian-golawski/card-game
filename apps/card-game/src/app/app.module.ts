@@ -7,13 +7,23 @@ import { SummaryModule } from '@card-game/summary';
 import { WelcomeModule } from '@card-game/welcome';
 import { EffectsModule } from '@ngrx/effects';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
-import { StoreModule } from '@ngrx/store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { DeckGuard } from './deck.guard';
 import { routes } from './routes';
+
+// tslint:disable:no-any
+export function localStorageSyncReducer(
+  reducer: ActionReducer<any>
+): ActionReducer<any> {
+  return localStorageSync({ keys: ['game', 'card'], rehydrate: true })(reducer);
+}
+const metaReducers: MetaReducer<any, any>[] = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +36,7 @@ import { routes } from './routes';
     StoreModule.forRoot(
       { router: routerReducer },
       {
+        metaReducers,
         runtimeChecks: {
           strictActionImmutability: true,
           strictStateImmutability: true,

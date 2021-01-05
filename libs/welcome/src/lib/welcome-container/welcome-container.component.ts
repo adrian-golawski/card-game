@@ -16,4 +16,8 @@ export class WelcomeContainerComponent {
   startNewGame(): void {
     this.gameFacade.startNewGame();
   }
+
+  continueGame(): void {
+    this.gameFacade.startExistingGame();
+  }
 }

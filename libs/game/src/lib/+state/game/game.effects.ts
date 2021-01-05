@@ -16,11 +16,11 @@ import { ROUND_COUNT } from '../../tokens';
 import {
   continueGame,
   endGame,
+  startExistingGame,
   startGameSuccess,
   startNewGame,
   startNewGameRequest,
   verifyBet,
-  verifyBetFailure,
   verifyBetRequest,
   verifyBetSuccess,
 } from './game.actions';
@@ -41,6 +41,15 @@ export class GameEffects {
       ofType(startNewGame),
       tap(() => this.cardsFacade.createNewDeck()),
       map(() => startNewGameRequest())
+    )
+  );
+
+  startExistingGame$: Observable<Action> = createEffect(() =>
+    this.actions.pipe(
+      ofType(startExistingGame),
+      withLatestFrom(this.gameFacade.score$, this.gameFacade.roundsLeft$),
+      tap(() => this.router.navigate(['game'])),
+      map(([_, score, rounds]) => startGameSuccess({ rounds, score }))
     )
   );
 

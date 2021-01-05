@@ -1,6 +1,7 @@
 <button
   [disabled]="gameLoading$ | async"
   *ngIf="gameInProgress$ | async"
+  (click)="continueGame()"
   data-cy="continue-button"
 >
   Continue Game

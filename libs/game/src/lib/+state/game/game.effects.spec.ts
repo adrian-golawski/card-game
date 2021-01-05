@@ -17,7 +17,7 @@ import { Observable, of } from 'rxjs';
 
 import {
   continueGame,
-  endGame,
+  startExistingGame,
   startGameSuccess,
   startNewGame,
   startNewGameRequest,
@@ -63,6 +63,8 @@ describe('GameEffects', () => {
             betDetails$: of('3p40paa87x90'),
             // tslint:disable-next-line:no-magic-numbers
             roundsLeft$: of(10),
+            // tslint:disable-next-line:no-magic-numbers
+            score$: of(4),
           },
         },
         {
@@ -111,6 +113,24 @@ describe('GameEffects', () => {
       });
 
       expect(effects.startNewGameSuccess$).toBeObservable(expected);
+      expect(navigate).toBeCalledWith(['game']);
+    });
+  });
+
+  describe('startExistingGame$', () => {
+    it('should navigate to /game and set saved round values', () => {
+      effects = TestBed.inject(GameEffects);
+      const { navigate } = router;
+      actions = hot('-a-|', { a: startExistingGame() });
+
+      const expected = hot('-a-|', {
+        a: startGameSuccess({
+          rounds: 10,
+          score: 4,
+        }),
+      });
+
+      expect(effects.startExistingGame$).toBeObservable(expected);
       expect(navigate).toBeCalledWith(['game']);
     });
   });
