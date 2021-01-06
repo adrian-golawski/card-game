@@ -8,10 +8,12 @@
     width: 100%;
     height: 100%;
 
-    transition: transform 0.5s;
+    transition: transform 1s;
     transform-style: preserve-3d;
 
     &.reversed {
+      transition: transform 1s;
+      transform-style: preserve-3d;
       transform: rotateY(180deg);
     }
   }
@@ -38,11 +40,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-
-    transform: rotateY(-180deg);
   }
 
   .card-back {
+    transform: rotateY(-180deg);
+
     background: radial-gradient(
         circle,
         transparent 20%,

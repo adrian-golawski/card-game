@@ -5,6 +5,14 @@ import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
 import { GameFacade } from '../+state/game/game.facade';
+import { ROUND_COUNT } from '../tokens';
+
+jest.mock('rxjs/operators', () => {
+  const operators = jest.requireActual('rxjs/operators');
+  operators.delay = jest.fn(() => (s) => s);
+
+  return operators;
+});
 
 describe('GameContainerComponent', () => {
   let shallow: Shallow<GameContainerComponent>;
@@ -34,6 +42,10 @@ describe('GameContainerComponent', () => {
           betLower$: of(undefined),
           resultLoading$: of(false),
         },
+      },
+      {
+        provide: ROUND_COUNT,
+        useValue: 3,
       },
     ]);
   });

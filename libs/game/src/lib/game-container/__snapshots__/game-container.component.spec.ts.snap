@@ -4,12 +4,39 @@ exports[`GameContainerComponent should match the snapshot with no bet given 1`] 
 <ng-component>
   <card-game-game-container>
     <div
+      class="deck-container"
+    >
+      
+      <div
+        class="card"
+        style="padding: 0px;"
+      >
+        <card-game-card-display />
+      </div>
+      <div
+        class="card"
+        style="padding: 16.666666666666668px;"
+      >
+        <card-game-card-display />
+      </div>
+      <div
+        class="card"
+        style="padding: 33.333333333333336px;"
+      >
+        <card-game-card-display />
+      </div>
+      <div
+        class="card"
+        style="padding: 50px;"
+      >
+        <card-game-card-display />
+      </div>
+    </div>
+    <div />
+    <div
       data-cy="rounds-left"
     >
       Rounds left: 30
-    </div>
-    <div>
-      Played Cards: [H2]
     </div>
     <button
       data-cy="draw-next"

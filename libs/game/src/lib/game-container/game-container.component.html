@@ -1,5 +1,17 @@
+<div class="deck-container">
+  <div
+    [ngClass]="{ hidden: i > reverseCardIndex }"
+    class="card"
+    *ngFor="let card of this.allCards$ | async; let i = index"
+    [style.padding]="i * (50 / roundCount) + 'px'"
+  >
+    <card-game-card-display [reversed]="i < reverseCardIndex" [card]="card">
+    </card-game-card-display>
+  </div>
+</div>
+<div class=""></div>
+
 <div data-cy="rounds-left">Rounds left: {{ roundsLeft$ | async }}</div>
-<div>Played Cards: [{{ playedCards$ | async }}]</div>
 
 <button
   [disabled]="

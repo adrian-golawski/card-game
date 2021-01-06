@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 import { GameEffects } from './+state/game/game.effects';
 import { GameFacade } from './+state/game/game.facade';
 import * as fromGame from './+state/game/game.reducer';
+import { CardDisplayComponent } from './card-display/card-display.component';
 import { GameContainerComponent } from './game-container/game-container.component';
 
 @NgModule({
@@ -16,7 +17,7 @@ import { GameContainerComponent } from './game-container/game-container.componen
     EffectsModule.forFeature([GameEffects]),
     RouterModule.forChild([]),
   ],
-  declarations: [GameContainerComponent],
+  declarations: [GameContainerComponent, CardDisplayComponent],
   providers: [GameFacade],
 })
 export class GameModule {}
