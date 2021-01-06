@@ -1,0 +1,13 @@
+<div class="playing-card">
+  <div [ngClass]="{ reversed: this.reversed }" class="flip-card">
+    <div
+      [style.background-image]="
+        card && card.image
+          ? 'url(' + card.image + ')'
+          : 'linear-gradient(white, black)'
+      "
+      class="card-front"
+    ></div>
+    <div class="card-back"></div>
+  </div>
+</div>

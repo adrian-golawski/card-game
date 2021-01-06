@@ -1,12 +1,10 @@
 import { Card, CardsFacade, CardValue } from '@card-game/cards';
 import { GameContainerComponent, GameModule } from '@card-game/game';
-import { select } from '@ngrx/store';
 
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { Shallow } from 'shallow-render';
 
 import { GameFacade } from '../+state/game/game.facade';
-import * as GameSelectors from '../+state/game/game.selectors';
 
 describe('GameContainerComponent', () => {
   let shallow: Shallow<GameContainerComponent>;

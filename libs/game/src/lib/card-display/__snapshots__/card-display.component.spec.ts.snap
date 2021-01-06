@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardDisplayComponent should match the snapshot reversed 1`] = `
+<ng-component>
+  <card-game-card-display>
+    <div
+      class="playing-card"
+    >
+      <div
+        class="flip-card reversed"
+      >
+        <div
+          class="card-front"
+        />
+        <div
+          class="card-back"
+        />
+      </div>
+    </div>
+  </card-game-card-display>
+</ng-component>
+`;
+
+exports[`CardDisplayComponent should match the snapshot with card given 1`] = `
+<ng-component>
+  <card-game-card-display>
+    <div
+      class="playing-card"
+    >
+      <div
+        class="flip-card"
+      >
+        <div
+          class="card-front"
+          style="background-image: url(https://deckofcardsapi.com/static/img/KH.png);"
+        />
+        <div
+          class="card-back"
+        />
+      </div>
+    </div>
+  </card-game-card-display>
+</ng-component>
+`;
+
+exports[`CardDisplayComponent should match the snapshot with no card given 1`] = `
+<ng-component>
+  <card-game-card-display>
+    <div
+      class="playing-card"
+    >
+      <div
+        class="flip-card"
+      >
+        <div
+          class="card-front"
+        />
+        <div
+          class="card-back"
+        />
+      </div>
+    </div>
+  </card-game-card-display>
+</ng-component>
+`;
