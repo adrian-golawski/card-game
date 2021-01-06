@@ -3,14 +3,30 @@
 exports[`WelcomeContainerComponent should match the snapshot when game is loading 1`] = `
 <ng-component>
   <card-game-welcome-container>
-    
-    <button
-      data-cy="start-button"
-      disabled=""
+    <div
+      class="text-container"
     >
-       Start New Game
-  
-    </button>
+      <p>
+        Welcome to my Card Guessing Game Demo!
+      </p>
+      <p>
+         You will be guessing a relative value of the next card randomly picked from the deck. Each correct answer will give you 0.1 points. The game lasts for 30 guesses. 
+      </p>
+      <p>
+         The game saves your progress after each move, so feel free to return any time you want. 
+      </p>
+    </div>
+    <div
+      class="button-container"
+    >
+      
+      <button
+        data-cy="start-button"
+        disabled=""
+      >
+         Start New Game 
+      </button>
+    </div>
   </card-game-welcome-container>
 </ng-component>
 `;
@@ -18,19 +34,34 @@ exports[`WelcomeContainerComponent should match the snapshot when game is loadin
 exports[`WelcomeContainerComponent should match the snapshot with game in progress 1`] = `
 <ng-component>
   <card-game-welcome-container>
-    
-    <button
-      data-cy="continue-button"
+    <div
+      class="text-container"
     >
-       Continue Game
-  
-    </button>
-    <button
-      data-cy="start-button"
+      <p>
+        Welcome to my Card Guessing Game Demo!
+      </p>
+      <p>
+         You will be guessing a relative value of the next card randomly picked from the deck. Each correct answer will give you 0.1 points. The game lasts for 30 guesses. 
+      </p>
+      <p>
+         The game saves your progress after each move, so feel free to return any time you want. 
+      </p>
+    </div>
+    <div
+      class="button-container"
     >
-       Start New Game
-  
-    </button>
+      
+      <button
+        data-cy="continue-button"
+      >
+         Continue Game 
+      </button>
+      <button
+        data-cy="start-button"
+      >
+         Start New Game 
+      </button>
+    </div>
   </card-game-welcome-container>
 </ng-component>
 `;
@@ -38,13 +69,29 @@ exports[`WelcomeContainerComponent should match the snapshot with game in progre
 exports[`WelcomeContainerComponent should match the snapshot with no game in progress 1`] = `
 <ng-component>
   <card-game-welcome-container>
-    
-    <button
-      data-cy="start-button"
+    <div
+      class="text-container"
     >
-       Start New Game
-  
-    </button>
+      <p>
+        Welcome to my Card Guessing Game Demo!
+      </p>
+      <p>
+         You will be guessing a relative value of the next card randomly picked from the deck. Each correct answer will give you 0.1 points. The game lasts for 30 guesses. 
+      </p>
+      <p>
+         The game saves your progress after each move, so feel free to return any time you want. 
+      </p>
+    </div>
+    <div
+      class="button-container"
+    >
+      
+      <button
+        data-cy="start-button"
+      >
+         Start New Game 
+      </button>
+    </div>
   </card-game-welcome-container>
 </ng-component>
 `;

@@ -1,0 +1,47 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  position: absolute;
+  height: 100%;
+}
+
+.text-container {
+  padding: 0px 180px;
+}
+
+p {
+  font-size: larger;
+  margin-top: 60px;
+  text-align: center;
+
+  &:first-of-type {
+    margin-top: 0px;
+  }
+}
+
+.button-container {
+  text-align: center;
+}
+
+button {
+  font-size: larger;
+  padding: 20px;
+  margin: 0px 20px;
+
+  color: #ffffff;
+  background-color: rgba(1, 1, 1, 0.3);
+
+  border: 1px solid rgba(1, 1, 1, 0.3);
+  border-radius: 40px;
+
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    transition: all 0.3s ease-in;
+
+    background-color: rgba(1, 1, 1, 0.8);
+    box-shadow: blanchedalmond 0px 0px 10px;
+  }
+}

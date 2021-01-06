@@ -1,15 +1,31 @@
-<button
-  [disabled]="gameLoading$ | async"
-  *ngIf="gameInProgress$ | async"
-  (click)="continueGame()"
-  data-cy="continue-button"
->
-  Continue Game
-</button>
-<button
-  [disabled]="gameLoading$ | async"
-  (click)="startNewGame()"
-  data-cy="start-button"
->
-  Start New Game
-</button>
+<div class="text-container">
+  <p>Welcome to my Card Guessing Game Demo!</p>
+  <p>
+    You will be guessing a relative value of the next card randomly picked from
+    the deck. Each correct answer will give you 0.1 points. The game lasts for
+    30 guesses.
+  </p>
+  <p>
+    The game saves your progress after each move, so feel free to return any
+    time you want.
+  </p>
+</div>
+
+<div class="button-container">
+  <button
+    [disabled]="gameLoading$ | async"
+    *ngIf="gameInProgress$ | async"
+    (click)="continueGame()"
+    data-cy="continue-button"
+  >
+    Continue Game
+  </button>
+
+  <button
+    [disabled]="gameLoading$ | async"
+    (click)="startNewGame()"
+    data-cy="start-button"
+  >
+    Start New Game
+  </button>
+</div>
