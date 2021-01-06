@@ -3,10 +3,29 @@
 exports[`AppComponent should match the snapshot 1`] = `
 <ng-component>
   <card-game-root>
-    <h1>
-      card-game
+    <h1
+      class="title"
+    >
+      The Card Game
     </h1>
-    <router-outlet />
+    <div
+      class="container"
+    >
+      <router-outlet />
+    </div>
+    <hr />
+    <p>
+      Developed with love by Pan Bubr (Adrian Goławski).
+    </p>
+    <p>
+      Powered by 
+      <a
+        href="https://deckofcardsapi.com/"
+      >
+        Deck of Cards API
+      </a>
+      .
+    </p>
   </card-game-root>
 </ng-component>
 `;
