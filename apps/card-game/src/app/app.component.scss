@@ -6,7 +6,8 @@
 .container {
   position: relative;
 
-  min-height: 640px;
+  margin: 20px;
+  padding: 20px;
 
   background-color: rgba(1, 1, 1, 0.3);
   border: none;
@@ -19,9 +20,13 @@ hr {
   border-top: 1px solid #eee;
 }
 
-p {
-  text-align: center;
-  margin-bottom: 10px;
+.footer {
+  margin-bottom: 50px;
+
+  p {
+    text-align: center;
+    margin-bottom: 10px;
+  }
 }
 
 a {

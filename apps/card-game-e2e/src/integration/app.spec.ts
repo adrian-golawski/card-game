@@ -1,5 +1,9 @@
-import { betLowerButton, drawNextButton } from '../support/game.po';
-import { finalScore, playAgainButton } from '../support/summary.po';
+import {
+  betLowerButton,
+  drawNextButton,
+  finalScore,
+  playAgainButton,
+} from '../support/game.po';
 import { getContinueButton, getStartButton } from '../support/welcome.po';
 
 describe('main game scenario', () => {

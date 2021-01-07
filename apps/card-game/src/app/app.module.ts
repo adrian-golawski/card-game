@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { CardsModule } from '@card-game/cards';
 import { GameModule, ROUND_COUNT } from '@card-game/game';
-import { SummaryModule } from '@card-game/summary';
 import { WelcomeModule } from '@card-game/welcome';
 import { EffectsModule } from '@ngrx/effects';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
@@ -48,7 +47,6 @@ const metaReducers: MetaReducer<any, any>[] = [localStorageSyncReducer];
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     WelcomeModule,
     GameModule,
-    SummaryModule,
     CardsModule,
   ],
   providers: [

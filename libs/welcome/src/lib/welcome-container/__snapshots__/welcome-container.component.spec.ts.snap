@@ -10,7 +10,7 @@ exports[`WelcomeContainerComponent should match the snapshot when game is loadin
         Welcome to my Card Guessing Game Demo!
       </p>
       <p>
-         You will be guessing a relative value of the next card randomly picked from the deck. Each correct answer will give you 0.1 points. The game lasts for 30 guesses. 
+         You will be guessing a relative value of the next card randomly picked from the deck. Each correct answer will give you 0.1 points. Draws are counted in your favor. The game lasts for 30 guesses. 
       </p>
       <p>
          The game saves your progress after each move, so feel free to return any time you want. 
@@ -41,7 +41,7 @@ exports[`WelcomeContainerComponent should match the snapshot with game in progre
         Welcome to my Card Guessing Game Demo!
       </p>
       <p>
-         You will be guessing a relative value of the next card randomly picked from the deck. Each correct answer will give you 0.1 points. The game lasts for 30 guesses. 
+         You will be guessing a relative value of the next card randomly picked from the deck. Each correct answer will give you 0.1 points. Draws are counted in your favor. The game lasts for 30 guesses. 
       </p>
       <p>
          The game saves your progress after each move, so feel free to return any time you want. 
@@ -76,7 +76,7 @@ exports[`WelcomeContainerComponent should match the snapshot with no game in pro
         Welcome to my Card Guessing Game Demo!
       </p>
       <p>
-         You will be guessing a relative value of the next card randomly picked from the deck. Each correct answer will give you 0.1 points. The game lasts for 30 guesses. 
+         You will be guessing a relative value of the next card randomly picked from the deck. Each correct answer will give you 0.1 points. Draws are counted in your favor. The game lasts for 30 guesses. 
       </p>
       <p>
          The game saves your progress after each move, so feel free to return any time you want. 

@@ -9,35 +9,47 @@
     </card-game-card-display>
   </div>
 </div>
-<div class=""></div>
+<div *ngIf="gameInProgress$ | async; else summary" class="controls-container">
+  <div data-cy="rounds-left">Rounds left: {{ roundsLeft$ | async }}</div>
 
-<div data-cy="rounds-left">Rounds left: {{ roundsLeft$ | async }}</div>
-
-<button
-  [disabled]="
-    (betGiven$ | async) === false || (resultLoading$ | async) === true
-  "
-  (click)="verifyBet()"
-  data-cy="draw-next"
->
-  Draw new Card
-</button>
-
-<div>
   <button
-    [disabled]="(betGiven$ | async) && (betLower$ | async) === true"
-    (click)="giveBet(true)"
-    data-cy="bet-lower"
+    [disabled]="
+      (betGiven$ | async) === false || (resultLoading$ | async) === true
+    "
+    (click)="verifyBet()"
+    data-cy="draw-next"
   >
-    Bet lower
+    Draw new Card
   </button>
-  <button
-    [disabled]="(betGiven$ | async) && (betLower$ | async) === false"
-    (click)="giveBet(false)"
-    data-cy="bet-higher"
-  >
-    Bet higher
-  </button>
+
+  <div>
+    <button
+      [disabled]="(betGiven$ | async) && (betLower$ | async) === true"
+      (click)="giveBet(true)"
+      data-cy="bet-lower"
+    >
+      Bet lower
+    </button>
+    <button
+      [disabled]="(betGiven$ | async) && (betLower$ | async) === false"
+      (click)="giveBet(false)"
+      data-cy="bet-higher"
+    >
+      Bet higher
+    </button>
+  </div>
+
+  <div data-cy="score">Score: {{ score$ | async }}</div>
 </div>
 
-<div data-cy="score">Score: {{ score$ | async }}</div>
+<ng-template #summary>
+  <div class="controls-container">
+    <h1>Congratulations!</h1>
+
+    <h2 data-cy="final-score">Your final score is: {{ score$ | async }}</h2>
+
+    <div class="button-container">
+      <button (click)="restartGame()" data-cy="play-again">Play again</button>
+    </div>
+  </div>
+</ng-template>

@@ -16,6 +16,8 @@ import { ROUND_COUNT } from '../../tokens';
 import {
   continueGame,
   endGame,
+  restartGame,
+  restartGameComplete,
   startExistingGame,
   startGameSuccess,
   startNewGame,
@@ -100,11 +102,17 @@ export class GameEffects {
         if (roundsLeft > 1) {
           return continueGame();
         } else {
-          this.router.navigate(['summary']);
-
           return endGame();
         }
       })
+    )
+  );
+
+  restartGame$: Observable<Action> = createEffect(() =>
+    this.actions.pipe(
+      ofType(restartGame),
+      tap(() => this.router.navigate([''])),
+      map(() => restartGameComplete())
     )
   );
 }

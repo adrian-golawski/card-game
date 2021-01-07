@@ -7,8 +7,8 @@ import { delay, filter, map, withLatestFrom } from 'rxjs/operators';
 import { GameFacade } from '../+state/game/game.facade';
 import { ROUND_COUNT } from '../tokens';
 
-const IMG_LOAD_DELAY = 1000;
-const ARBITRARY_SCORE_MULTIPLIER = 0.1;
+const IMG_LOAD_DELAY = 500;
+const ARBITRARY_SCORE_MULTIPLIER = 10;
 
 @Component({
   selector: 'card-game-game-container',
@@ -38,12 +38,12 @@ export class GameContainerComponent implements OnInit {
   score$: Observable<number> = this.gameFacade.score$.pipe(
     delay(IMG_LOAD_DELAY),
     // tslint:disable-next-line:no-magic-numbers
-    map((score) => score * ARBITRARY_SCORE_MULTIPLIER)
+    map((score) => score / ARBITRARY_SCORE_MULTIPLIER)
   );
   betGiven$: Observable<boolean> = this.gameFacade.betGiven$;
   betLower$: Observable<boolean> = this.gameFacade.betLower$;
   resultLoading$: Observable<boolean> = this.gameFacade.resultLoading$;
-
+  gameInProgress$: Observable<boolean> = this.gameFacade.gameInProgress$;
   reverseCard(index: number): void {
     this.reverseCardIndex = index;
   }
@@ -60,5 +60,9 @@ export class GameContainerComponent implements OnInit {
 
   verifyBet(): void {
     this.gameFacade.verifyBet();
+  }
+
+  restartGame(): void {
+    this.gameFacade.restartGame();
   }
 }

@@ -171,32 +171,6 @@
         }
       }
     },
-    "summary": {
-      "projectType": "library",
-      "root": "libs/summary",
-      "sourceRoot": "libs/summary/src",
-      "prefix": "card-game",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/summary/tsconfig.lib.json",
-              "libs/summary/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/summary/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/summary"],
-          "options": {
-            "jestConfig": "libs/summary/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "cards": {
       "projectType": "library",
       "root": "libs/cards",

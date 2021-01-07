@@ -6,6 +6,9 @@ export const startNewGameRequest = createAction(
   '[Game] Start New Game Request'
 );
 
+export const restartGame = createAction('[Game] Restart Game');
+export const restartGameComplete = createAction('[Game] Restart Game Complete');
+
 export const startExistingGame = createAction('[Game] Start Existing Game');
 
 export const startGameSuccess = createAction(

@@ -67,7 +67,8 @@ const gamesReducer = createReducer(
   on(GameActions.endGame, (state) => ({
     ...state,
     gameActive: false,
-  }))
+  })),
+  on(GameActions.restartGame, () => initialState)
 );
 
 export function reducer(state: State, action: Action): State {

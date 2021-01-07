@@ -56,4 +56,8 @@ export class GameFacade {
   startExistingGame(): void {
     this.store.dispatch(GameActions.startExistingGame());
   }
+
+  restartGame(): void {
+    this.store.dispatch(GameActions.restartGame());
+  }
 }
