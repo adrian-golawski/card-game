@@ -4,6 +4,11 @@ exports[`GameContainerComponent should match the snapshot with no bet given 1`] 
 <ng-component>
   <card-game-game-container>
     <div
+      class="card-history"
+    >
+      
+    </div>
+    <div
       class="deck-container"
     >
       
@@ -54,6 +59,7 @@ exports[`GameContainerComponent should match the snapshot with no bet given 1`] 
         </button>
       </div>
     </div>
+    
     
   </card-game-game-container>
 </ng-component>

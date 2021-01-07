@@ -64,7 +64,7 @@ export class CardsEffects {
             })
           ),
         onError: (a: Action, error: Error) =>
-          CardActions.drawCardFailure({ error }),
+          CardActions.drawNewCardFailure({ error }),
       })
     )
   );

@@ -11,16 +11,10 @@
   </p>
 </div>
 
-<div class="button-container">
-  <button
-    [disabled]="gameLoading$ | async"
-    *ngIf="gameInProgress$ | async"
-    (click)="continueGame()"
-    data-cy="continue-button"
-  >
-    Continue Game
-  </button>
-
+<div
+  *ngIf="(gameInProgress$ | async) === false; else continue"
+  class="button-container"
+>
   <button
     [disabled]="gameLoading$ | async"
     (click)="startNewGame()"
@@ -29,3 +23,25 @@
     Start New Game
   </button>
 </div>
+
+<ng-template #continue>
+  <h2 class="resume-prompt">Reload the previous game?</h2>
+  <div class="button-container">
+    <button
+      [disabled]="gameLoading$ | async"
+      *ngIf="gameInProgress$ | async"
+      (click)="continueGame()"
+      data-cy="continue-button"
+    >
+      YES, Resume Game
+    </button>
+
+    <button
+      [disabled]="gameLoading$ | async"
+      (click)="startNewGame()"
+      data-cy="start-button"
+    >
+      NO, Start New Game
+    </button>
+  </div>
+</ng-template>

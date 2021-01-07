@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import {
   CardsFacade,
   createNewDeckSuccess,
+  drawNewCardFailure,
   drawNewCardSuccess,
 } from '@card-game/cards';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -23,6 +24,7 @@ import {
   startNewGame,
   startNewGameRequest,
   verifyBet,
+  verifyBetFailure,
   verifyBetRequest,
   verifyBetSuccess,
 } from './game.actions';
@@ -91,6 +93,13 @@ export class GameEffects {
           return verifyBetSuccess({ win: true });
         }
       })
+    )
+  );
+
+  verifyBetFailure$: Observable<Action> = createEffect(() =>
+    this.actions.pipe(
+      ofType(drawNewCardFailure),
+      map(({ error }) => verifyBetFailure({ error }))
     )
   );
 

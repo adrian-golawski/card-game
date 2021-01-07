@@ -39,18 +39,20 @@ export class GameFacade {
     betLower: boolean;
   }> = this.store.pipe(select(GameSelectors.betDetails));
 
+  winHistory$: Observable<boolean[]> = this.store.pipe(
+    select(GameSelectors.winHistory)
+  );
+
+  error$: Observable<Error> = this.store.pipe(select(GameSelectors.error));
+
   constructor(private readonly store: Store<fromGame.GamePartialState>) {}
 
   startNewGame(): void {
     this.store.dispatch(GameActions.startNewGame());
   }
 
-  giveBet(lower: boolean): void {
-    this.store.dispatch(GameActions.betGiven({ lower }));
-  }
-
-  verifyBet(): void {
-    this.store.dispatch(GameActions.verifyBet());
+  verifyBet(lower: boolean): void {
+    this.store.dispatch(GameActions.verifyBet({ lower }));
   }
 
   startExistingGame(): void {

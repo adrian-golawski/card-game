@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { Card, CardsFacade } from '@card-game/cards';
 
 import { Observable } from 'rxjs';
-import { delay, filter, map, withLatestFrom } from 'rxjs/operators';
+import { delay, map, withLatestFrom } from 'rxjs/operators';
 
 import { GameFacade } from '../+state/game/game.facade';
 import { ROUND_COUNT } from '../tokens';
@@ -33,6 +33,26 @@ export class GameContainerComponent implements OnInit {
     })
   );
 
+  error$: Observable<Error> = this.gameFacade.error$;
+
+  playedCards$: Observable<
+    { card: Card; win: boolean }[]
+  > = this.allCards$.pipe(
+    delay(ARBITRARY_SCORE_MULTIPLIER),
+    withLatestFrom(this.gameFacade.winHistory$),
+    map(([cards, winHistory]) =>
+      cards
+        .filter((card) => card)
+        .splice(1)
+        .reverse()
+        .splice(0, this.roundCount)
+        .map((card, index) => ({
+          card,
+          win: winHistory[index],
+        }))
+    )
+  );
+
   reverseCardIndex: number = this.roundCount + 1;
 
   score$: Observable<number> = this.gameFacade.score$.pipe(
@@ -54,12 +74,8 @@ export class GameContainerComponent implements OnInit {
     });
   }
 
-  giveBet(lower: boolean): void {
-    this.gameFacade.giveBet(lower);
-  }
-
-  verifyBet(): void {
-    this.gameFacade.verifyBet();
+  verifyBet(lower: boolean): void {
+    this.gameFacade.verifyBet(lower);
   }
 
   restartGame(): void {

@@ -22,7 +22,7 @@ export class CardsFacade {
 
   playedCards$: Observable<Card[]> = this.store.pipe(
     select(CardsSelectors.getDeck),
-    map((deck) => deck?.playedCards)
+    map((deck) => deck?.playedCards || [])
   );
 
   deckId$: Observable<string> = this.store.pipe(

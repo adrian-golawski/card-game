@@ -1,3 +1,15 @@
+.card-history {
+  padding: 10px 70px;
+  text-align: center;
+
+  .small-card {
+    padding: 5px;
+    display: inline-block;
+    height: 79px;
+    width: 56px;
+  }
+}
+
 .deck-container {
   position: relative;
 
@@ -9,6 +21,9 @@
 
   .card {
     position: absolute;
+
+    height: 157px;
+    width: 113px;
 
     &.hidden {
       animation: rightAndFade 2s;
@@ -46,4 +61,8 @@
     transform: translateX(200px);
     opacity: 0;
   }
+}
+
+.error-message {
+  margin: 20px;
 }

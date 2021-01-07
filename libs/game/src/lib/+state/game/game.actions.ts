@@ -28,7 +28,10 @@ export const betGiven = createAction(
   props<{ lower: boolean }>()
 );
 
-export const verifyBet = createAction('[Game] Verify Bet');
+export const verifyBet = createAction(
+  '[Game] Verify Bet',
+  props<{ lower: boolean }>()
+);
 
 export const verifyBetRequest = createAction(
   '[Game] Verify Bet Request',
@@ -39,4 +42,7 @@ export const verifyBetSuccess = createAction(
   '[Game] Verify Bet Success',
   props<{ win: boolean }>()
 );
-export const verifyBetFailure = createAction('[Game] Verify Bet Failure');
+export const verifyBetFailure = createAction(
+  '[Game] Verify Bet Failure',
+  props<{ error: Error }>()
+);

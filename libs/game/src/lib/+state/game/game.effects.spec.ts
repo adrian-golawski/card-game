@@ -139,7 +139,7 @@ describe('GameEffects', () => {
     it('should save last played Card and request a new Card', () => {
       effects = TestBed.inject(GameEffects);
       const { drawNewCard } = cardsFacade;
-      actions = hot('-a-|', { a: verifyBet() });
+      actions = hot('-a-|', { a: verifyBet({ lower: true }) });
 
       const expected = hot('-a-|', {
         a: verifyBetRequest({

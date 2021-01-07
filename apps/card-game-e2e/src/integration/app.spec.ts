@@ -1,6 +1,5 @@
 import {
   betLowerButton,
-  drawNextButton,
   finalScore,
   playAgainButton,
 } from '../support/game.po';
@@ -38,7 +37,6 @@ describe('main game scenario', () => {
     getContinueButton().should('not.be.visible');
 
     getStartButton().click();
-    betLowerButton().click();
 
     cy.route('GET', '/api/card/deck/defe4mwg6kyk/draw/?count=1', {
       success: true,
@@ -57,8 +55,6 @@ describe('main game scenario', () => {
       ],
       remaining: 50,
     }).as('drawNewCard1');
-
-    drawNextButton().click();
 
     betLowerButton().click();
 
@@ -80,8 +76,6 @@ describe('main game scenario', () => {
       remaining: 49,
     }).as('drawNewCard2');
 
-    drawNextButton().click();
-
     betLowerButton().click();
 
     cy.route('GET', '/api/card/deck/defe4mwg6kyk/draw/?count=1', {
@@ -102,7 +96,7 @@ describe('main game scenario', () => {
       remaining: 48,
     }).as('drawNewCard3');
 
-    drawNextButton().click();
+    betLowerButton().click();
 
     finalScore().should('be.visible');
     playAgainButton().should('be.visible');

@@ -41,6 +41,8 @@ describe('GameContainerComponent', () => {
           betGiven$: of(false),
           betLower$: of(undefined),
           resultLoading$: of(false),
+          winHistory$: of([true]),
+          error$: of(),
         },
       },
       {

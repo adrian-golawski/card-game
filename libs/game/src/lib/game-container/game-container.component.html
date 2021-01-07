@@ -1,3 +1,16 @@
+<div class="card-history">
+  <div class="small-card" *ngFor="let historyCard of this.playedCards$ | async">
+    <card-game-card-display [reversed]="false" [card]="historyCard.card">
+    </card-game-card-display>
+
+    <div *ngIf="historyCard.win; else fail">✅</div>
+
+    <ng-template #fail>
+      <div>❌</div>
+    </ng-template>
+  </div>
+</div>
+
 <div class="deck-container">
   <div
     [ngClass]="{ hidden: i > reverseCardIndex }"
@@ -10,36 +23,26 @@
   </div>
 </div>
 <div *ngIf="gameInProgress$ | async; else summary" class="controls-container">
-  <div data-cy="rounds-left">Rounds left: {{ roundsLeft$ | async }}</div>
-
-  <button
-    [disabled]="
-      (betGiven$ | async) === false || (resultLoading$ | async) === true
-    "
-    (click)="verifyBet()"
-    data-cy="draw-next"
-  >
-    Draw new Card
-  </button>
+  <h3 data-cy="rounds-left">Rounds left: {{ roundsLeft$ | async }}</h3>
 
   <div>
     <button
-      [disabled]="(betGiven$ | async) && (betLower$ | async) === true"
-      (click)="giveBet(true)"
+      [disabled]="(betGiven$ | async) && (resultLoading$ | async) === true"
+      (click)="verifyBet(true)"
       data-cy="bet-lower"
     >
       Bet lower
     </button>
     <button
-      [disabled]="(betGiven$ | async) && (betLower$ | async) === false"
-      (click)="giveBet(false)"
+      [disabled]="(betGiven$ | async) && (resultLoading$ | async) === true"
+      (click)="verifyBet(false)"
       data-cy="bet-higher"
     >
       Bet higher
     </button>
   </div>
 
-  <div data-cy="score">Score: {{ score$ | async }}</div>
+  <h3 data-cy="score">Score: {{ score$ | async }}</h3>
 </div>
 
 <ng-template #summary>
@@ -53,3 +56,18 @@
     </div>
   </div>
 </ng-template>
+
+<div *ngIf="error$ | async" class="controls-container">
+  <h2 class="error-message">We're very sorry :(</h2>
+
+  <h3>
+    Our Card Service may have encountered some problems. It usually happens
+    because of internet connection problems. Would you like to restart the game?
+  </h3>
+
+  <div class="button-container">
+    <button (click)="restartGame()" data-cy="play-again">
+      Restart the game
+    </button>
+  </div>
+</div>

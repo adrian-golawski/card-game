@@ -64,7 +64,7 @@ const cardsReducer = createReducer(
       }
     )
   ),
-  on(CardActions.drawCardFailure, (state, { error }) => ({
+  on(CardActions.drawNewCardFailure, (state, { error }) => ({
     ...state,
     cardLoading: false,
     error,

@@ -45,3 +45,10 @@ export let betDetails = createSelector(getGameState, (state: State) => ({
   cardValue: state.betCardValue,
   betLower: state.betLower,
 }));
+
+export let winHistory = createSelector(
+  getGameState,
+  (state: State) => state.winHistory
+);
+
+export let error = createSelector(getGameState, (state: State) => state.error);

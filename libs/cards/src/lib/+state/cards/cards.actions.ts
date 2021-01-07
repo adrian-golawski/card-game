@@ -63,7 +63,7 @@ export const drawNewCardSuccess = createAction(
   '[Cards] Draw New Card Success',
   props<{ card: Card }>()
 );
-export const drawCardFailure = createAction(
+export const drawNewCardFailure = createAction(
   '[Cards] Draw New Card Failure',
   props<{ error: Error }>()
 );

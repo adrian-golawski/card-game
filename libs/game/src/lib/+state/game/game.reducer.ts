@@ -11,8 +11,10 @@ export interface State {
   betCardValue?: CardValue;
   gameLoading: boolean;
   score: number;
-  gameActive?: boolean;
+  gameActive: boolean;
   roundsLeft?: number;
+  winHistory: boolean[];
+  error?: Error;
 }
 
 export interface GamePartialState {
@@ -21,8 +23,10 @@ export interface GamePartialState {
 
 export const initialState: State = {
   score: 0,
+  winHistory: [],
   betGiven: false,
   gameLoading: false,
+  gameActive: false,
   resultLoading: false,
 };
 
@@ -41,8 +45,9 @@ const gamesReducer = createReducer(
     resultLoading: false,
     roundsLeft: rounds,
     gameLoading: false,
+    winHistory: [],
   })),
-  on(GameActions.betGiven, (state, { lower }) => ({
+  on(GameActions.verifyBet, (state, { lower }) => ({
     ...state,
     betGiven: true,
     betLower: lower,
@@ -59,6 +64,11 @@ const gamesReducer = createReducer(
     betLower: undefined,
     betCardValue: undefined,
     score: win ? state.score + 1 : state.score,
+    winHistory: [...state.winHistory, win],
+  })),
+  on(GameActions.verifyBetFailure, (state, { error }) => ({
+    ...state,
+    error: error,
   })),
   on(GameActions.continueGame, (state) => ({
     ...state,

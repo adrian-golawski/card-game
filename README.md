@@ -1,13 +1,13 @@
 # Card Game
 
-A simple game utilizing a [Dice API](http://roll.diceapi.com/) and a [Card API](https://deckofcardsapi.com/).
+A simple game utilizing a [Card API](https://deckofcardsapi.com/).
 
 Game is available as a docker container which can be found in the public docker registy `panbubr/card-game`.
 
 ### Test it locally:
 
 - Install [Docker](https://www.docker.com/).
-- `docker run -d -p 8888:80 panbubr/card-game:latest`
+- `docker run -p 8888:80 panbubr/card-game:latest`
 - Enter `http://localhost:8888` in your browser and test if yourself.
 
 # Development

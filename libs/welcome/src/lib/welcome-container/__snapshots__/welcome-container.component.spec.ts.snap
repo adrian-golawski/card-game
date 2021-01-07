@@ -16,10 +16,10 @@ exports[`WelcomeContainerComponent should match the snapshot when game is loadin
          The game saves your progress after each move, so feel free to return any time you want. 
       </p>
     </div>
+    
     <div
       class="button-container"
     >
-      
       <button
         data-cy="start-button"
         disabled=""
@@ -27,6 +27,7 @@ exports[`WelcomeContainerComponent should match the snapshot when game is loadin
          Start New Game 
       </button>
     </div>
+    
   </card-game-welcome-container>
 </ng-component>
 `;
@@ -47,6 +48,12 @@ exports[`WelcomeContainerComponent should match the snapshot with game in progre
          The game saves your progress after each move, so feel free to return any time you want. 
       </p>
     </div>
+    
+    <h2
+      class="resume-prompt"
+    >
+      Reload the previous game?
+    </h2>
     <div
       class="button-container"
     >
@@ -54,14 +61,15 @@ exports[`WelcomeContainerComponent should match the snapshot with game in progre
       <button
         data-cy="continue-button"
       >
-         Continue Game 
+         YES, Resume Game 
       </button>
       <button
         data-cy="start-button"
       >
-         Start New Game 
+         NO, Start New Game 
       </button>
     </div>
+    
   </card-game-welcome-container>
 </ng-component>
 `;
@@ -82,16 +90,17 @@ exports[`WelcomeContainerComponent should match the snapshot with no game in pro
          The game saves your progress after each move, so feel free to return any time you want. 
       </p>
     </div>
+    
     <div
       class="button-container"
     >
-      
       <button
         data-cy="start-button"
       >
          Start New Game 
       </button>
     </div>
+    
   </card-game-welcome-container>
 </ng-component>
 `;
